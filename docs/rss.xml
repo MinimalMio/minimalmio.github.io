@@ -1,5 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>MinimalMio's Blog</title><link>https://minimalmio.github.io</link><description>Just leave me drifting alone in the endless darkness..</description><copyright>MinimalMio's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://q1.qlogo.cn/g?b=qq&amp;nk=891947229&amp;s=640</url><title>avatar</title><link>https://minimalmio.github.io</link></image><lastBuildDate>Mon, 21 Oct 2024 11:36:47 +0000</lastBuildDate><managingEditor>MinimalMio's Blog</managingEditor><ttl>60</ttl><webMaster>MinimalMio's Blog</webMaster><item><title>在 Ubuntu 20.04 上编译安装 XRDP 全过程记录</title><link>https://minimalmio.github.io/post/zai-%20Ubuntu%2020.04%20-shang-bian-yi-an-zhuang-%20XRDP%20-quan-guo-cheng-ji-lu.html</link><description># 环境准备  &#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>MinimalMio's Blog</title><link>https://minimalmio.github.io</link><description>Just leave me drifting alone in the endless darkness..</description><copyright>MinimalMio's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://q1.qlogo.cn/g?b=qq&amp;nk=891947229&amp;s=640</url><title>avatar</title><link>https://minimalmio.github.io</link></image><lastBuildDate>Sun, 10 Nov 2024 11:54:13 +0000</lastBuildDate><managingEditor>MinimalMio's Blog</managingEditor><ttl>60</ttl><webMaster>MinimalMio's Blog</webMaster><item><title>在2024年执行Minecraft Forge 1.7.10 环境搭建</title><link>https://minimalmio.github.io/post/zai-2024-nian-zhi-xing-Minecraft%20Forge%201.7.10%20-huan-jing-da-jian.html</link><description># 环境搭配  &#13;
+&#13;
+本人通过摸索,最终的环境搭配是这样的：  &#13;
+JDK：Azul Zulu 8  &#13;
+IDEA：2021.2.4  &#13;
+MDK：[原版MDK的一个Fork](https://github.com/anatawa12/ForgeGradle-1.2)  &#13;
+&#13;
+**在现在,强烈不建议使用原版 Forge MDK！除非你非常确定你需要这么做。</description><guid isPermaLink="true">https://minimalmio.github.io/post/zai-2024-nian-zhi-xing-Minecraft%20Forge%201.7.10%20-huan-jing-da-jian.html</guid><pubDate>Sun, 10 Nov 2024 11:53:49 +0000</pubDate></item><item><title>在 Ubuntu 20.04 上编译安装 XRDP 全过程记录</title><link>https://minimalmio.github.io/post/zai-%20Ubuntu%2020.04%20-shang-bian-yi-an-zhuang-%20XRDP%20-quan-guo-cheng-ji-lu.html</link><description># 环境准备  &#13;
 &#13;
 安装软件包`build-essential libx11-dev libpam-dev libxrandr-dev libxfixes-dev autoconf automake libtool-bin pkg-config libfreetype2-dev libimlib2-dev `,以上是 XRDP 的编译安装依赖  &#13;
 我们还需要以下软件包来编译安装 XorgXRDP：`xserver-xorg-dev`  &#13;
