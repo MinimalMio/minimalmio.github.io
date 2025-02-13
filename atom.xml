@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>KSakura</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2025-02-13T11:34:40.525Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Kitahashi Sakura</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>winnt351-install</title>
+    <link href="http://example.com/2025/02/13/winnt351-install/"/>
+    <id>http://example.com/2025/02/13/winnt351-install/</id>
+    <published>2025-02-13T11:20:13.000Z</published>
+    <updated>2025-02-13T11:34:40.525Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="记-在-Qemu-上安装-Windows-NT-Workstation-3-51-中文版"><a href="#记-在-Qemu-上安装-Windows-NT-Workstation-3-51-中文版" class="headerlink" title="记 在 Qemu 上安装 Windows NT Workstation 3.51 中文版"></a>记 在 Qemu 上安装 Windows NT Workstation 3.51 中文版</h1><h2 id="您需要准备"><a href="#您需要准备" class="headerlink" title="您需要准备"></a>您需要准备</h2><ul><li>一个最大 2GB 的空虚拟磁盘  </li><li>一个 Windows NT Workstation 3.51 安装光盘（ <a href="https://archive.org/details/WinNTWorkstation3.51CHS">https://archive.org/details/WinNTWorkstation3.51CHS</a> ）  </li><li>一张 DOS 启动软盘（要支持光盘的）</li></ul><h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><ul><li>使用 DOS 启动软盘引导系统  </li><li>使用 fdisk 分区  </li><li>使用 format c: 格式化  </li><li>进入 d:  </li><li>输入 winnt&#x2F;b（可能需要先进i386文件夹）  </li><li>照常进行</li></ul><h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><ul><li>和 Windows NT 4.0 的第一阶段安装没有什么区别，略过</li></ul><h2 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h2><ul><li>过于简单，略</li></ul><p>启动命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-x86_64 \</span><br><span class="line">    -drive file=disk.qcow2,bus=0,unit=0,media=disk \</span><br><span class="line">    -drive file=cdrom.iso,format=raw,bus=0,unit=1,media=cdrom,<span class="built_in">readonly</span>=on \</span><br><span class="line">    -net nic,model=pcnet -net user \</span><br><span class="line">    -accel tcg -vga cirrus \</span><br><span class="line">    -smp cores=2,sockets=2 \</span><br><span class="line">    -M pc -m 128M -cpu pentium2 \</span><br><span class="line">    -vnc :1 -fda dos.img -boot c</span><br></pre></td></tr></table></figure><p>注1：第一阶段安装需要将 -boot c 换成 -boot a<br>注2：目前最新版的 Qemu 对 Windows 3.x 和 Windows NT 3.x 有鼠标飘移问题，原因未知  </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;记-在-Qemu-上安装-Windows-NT-Workstation-3-51-中文版&quot;&gt;&lt;a href=&quot;#记-在-Qemu-上安装-Windows-NT-Workstation-3-51-中文版&quot; class=&quot;headerlink&quot; title=&quot;记 在 </summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="QEMU" scheme="http://example.com/tags/QEMU/"/>
+    
+    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>winnt40-autologon</title>
+    <link href="http://example.com/2025/02/13/winnt40-autologon/"/>
+    <id>http://example.com/2025/02/13/winnt40-autologon/</id>
+    <published>2025-02-13T11:19:55.000Z</published>
+    <updated>2025-02-13T11:34:40.535Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="如何为-Windows-NT-4-0-启用-AutoLogon"><a href="#如何为-Windows-NT-4-0-启用-AutoLogon" class="headerlink" title="如何为 Windows NT 4.0 启用 AutoLogon?"></a>如何为 Windows NT 4.0 启用 AutoLogon?</h1><p>打开 注册表编辑器<br>导航至<br>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon<br>添加一项类型为 REG_SZ 的注册表项，名称为AutoAdminLogon。<br>值为1时会自动登录，值为0时不会自动登录<br>自动登录还会影响到 Ctrl-Alt-Del，启用 AutoLogon 后系统将不会再让你在登录之前按下 Ctrl-Alt-Del。  </p><p>后注：笔者测试时发现它只生效了一次，原因未知 </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;如何为-Windows-NT-4-0-启用-AutoLogon&quot;&gt;&lt;a href=&quot;#如何为-Windows-NT-4-0-启用-AutoLogon&quot; class=&quot;headerlink&quot; title=&quot;如何为 Windows NT 4.0 启用 AutoLogo</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>win98-qemu-usbtablet</title>
+    <link href="http://example.com/2025/02/13/win98-qemu-usbtablet/"/>
+    <id>http://example.com/2025/02/13/win98-qemu-usbtablet/</id>
+    <published>2025-02-13T11:19:37.000Z</published>
+    <updated>2025-02-13T11:34:40.545Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="如何为-Windows-98-启用-Qemu-USB-Tablet-支持"><a href="#如何为-Windows-98-启用-Qemu-USB-Tablet-支持" class="headerlink" title="如何为 Windows 98 启用 Qemu USB Tablet 支持"></a>如何为 Windows 98 启用 Qemu USB Tablet 支持</h1><h2 id="读前须知"><a href="#读前须知" class="headerlink" title="读前须知"></a>读前须知</h2><ul><li>此教程已在 Windows 98 和 Windows ME 上测试过，但 Windows 95 未经测试</li></ul><h2 id="开始操作"><a href="#开始操作" class="headerlink" title="开始操作"></a>开始操作</h2><p>第一步：先把你的 Windows 98 光盘上的内容复制到硬盘，一会会用</p><p>第二步：右键“我的电脑”，点击属性-&gt;设备管理器，找到 即插即用 BIOS 项（图标右下角会有一个警告图标）</p><p>第三步：把它的驱动程序更改为 PCI bus</p><p>第四步：系统会要求你重启，然后你会发现系统正在重装整个系统的驱动程序，因为此时你访问不了 CD-ROM，现在之前复制的安装文件就派上用场了</p><p>第五步：现在你的 Qemu USB Tablet 应该能正常工作了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;如何为-Windows-98-启用-Qemu-USB-Tablet-支持&quot;&gt;&lt;a href=&quot;#如何为-Windows-98-启用-Qemu-USB-Tablet-支持&quot; class=&quot;headerlink&quot; title=&quot;如何为 Windows 98 启用 Qe</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="QEMU" scheme="http://example.com/tags/QEMU/"/>
+    
+    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>uberbukkit-develping-b173</title>
+    <link href="http://example.com/2025/02/13/uberbukkit-develping-b173/"/>
+    <id>http://example.com/2025/02/13/uberbukkit-develping-b173/</id>
+    <published>2025-02-13T11:19:23.000Z</published>
+    <updated>2025-02-13T11:34:40.565Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="搭建-UberBukkit-b1-7-3-开发环境"><a href="#搭建-UberBukkit-b1-7-3-开发环境" class="headerlink" title="搭建 UberBukkit b1.7.3 开发环境"></a>搭建 UberBukkit b1.7.3 开发环境</h1><h2 id="什么是-UberBukkit？"><a href="#什么是-UberBukkit？" class="headerlink" title="什么是 UberBukkit？"></a>什么是 UberBukkit？</h2><p>它是 CraftBukkit b1.7.3 服务端的一个 fork，详情见 <a href="https://github.com/Moresteck/Project-Poseidon-Uberbukkit">https://github.com/Moresteck/Project-Poseidon-Uberbukkit</a> 。</p><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul><li>Java 8</li><li>Intellij IDEA 2021.2（下称“IDEA”）</li><li>一份 UberBukkit 服务端（下称“CB”）</li></ul><p>打开 IDEA，创建一个新的 Maven 项目。</p><p>在你的项目根目录建立一个文件夹，名为 <code>lib</code></p><p>将 CB 服务端放进里面，右键它，点击“Add as Library”。</p><p>然后在 src&#x2F;main&#x2F;resources 目录下新建一个 plugin.yml，内容示例如下所示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name: MyPlugin</span><br><span class="line">version: 1.0</span><br><span class="line">main: com.example.myplugin.MyPlugin</span><br><span class="line">description: A sample plugin for Beta 1.7.3</span><br></pre></td></tr></table></figure><p>然后按你的想法创建包，创建主类（记得改 plugin.yml 里的 main）</p><p>一段主类的示例代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.myplugin;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.bukkit.plugin.java.JavaPlugin;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyPlugin</span> <span class="keyword">extends</span> <span class="title class_">JavaPlugin</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onEnable</span><span class="params">()</span> &#123;getLogger().info(<span class="string">&quot;Plugin enabled!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onDisable</span><span class="params">()</span> &#123;getLogger().info(<span class="string">&quot;Plugin disabled!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="如何打包你的插件"><a href="#如何打包你的插件" class="headerlink" title="如何打包你的插件"></a>如何打包你的插件</h2><p>菜单栏 File &gt; Project Structure &gt; Artifacts</p><p>添加 JAR &gt; From modules with dependencies，选择主类并勾选 Include in project build。</p><p>删除左边框内的“Extracted (CB 服务端名称)”或类似内容，添加项目里的plugin.yml。</p><p>最后菜单栏 Build &gt; Build Artifacts</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;搭建-UberBukkit-b1-7-3-开发环境&quot;&gt;&lt;a href=&quot;#搭建-UberBukkit-b1-7-3-开发环境&quot; class=&quot;headerlink&quot; title=&quot;搭建 UberBukkit b1.7.3 开发环境&quot;&gt;&lt;/a&gt;搭建 UberBukk</summary>
+      
+    
+    
+    
+    
+    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
+    
+    <category term="Bukkit" scheme="http://example.com/tags/Bukkit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>setting-xrdp-rocky8</title>
+    <link href="http://example.com/2025/02/13/setting-xrdp-rocky8/"/>
+    <id>http://example.com/2025/02/13/setting-xrdp-rocky8/</id>
+    <published>2025-02-13T11:19:12.000Z</published>
+    <updated>2025-02-13T11:34:40.565Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="在-RockyLinux-8-上设置-XRDP"><a href="#在-RockyLinux-8-上设置-XRDP" class="headerlink" title="在 RockyLinux 8 上设置 XRDP"></a>在 RockyLinux 8 上设置 XRDP</h1><h2 id="软件包预备"><a href="#软件包预备" class="headerlink" title="软件包预备"></a>软件包预备</h2><p>以下将以Xorg XRDP为例  </p><blockquote><p>[!TIP]<br>你将需要安装以下软件包：xorgxrdp xrdp,以及一个可以正常工作的桌面环境。<br>本文将以KDE Plasma作文桌面环境,原因见上一个文章  </p></blockquote><p>运行命令<code>sudo dnf install xorgxrdp xrdp</code>安装XRDP以及XRDP的Xorg附属（是不是这么叫？）  </p><p>并运行命令<code>sudo dnf groupinstall &quot;KDE Plasma Workspaces&quot;</code>安装KDE Plasma桌面环境  </p><h2 id="设置XRDP"><a href="#设置XRDP" class="headerlink" title="设置XRDP"></a>设置XRDP</h2><p>安装完XRDP后还不够,你还需要设置一下XRDP,否则连接体验<strong>非常卡顿</strong><br>打开<code>/etc/xrdp/xrdp.ini</code>文件,找到<code>tcp_send_buffer_bytes</code>和<code>tcp_recv_buffer_bytes</code>两项,将其改为适合你服务器带宽的数字（本人设置是1048756）<br>然后找到项<code>max_bpp</code>,将其改为16<br>然后将<code>[Xorg]</code>一直到<code>code=20</code>的所有行取消注释（如果有）,保存并关闭文件。<br>然后打开<code>/etc/sysctl.conf</code>文件,添加以下两项：  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net.core.rmem_max=1048576  </span><br><span class="line">net.core.wmem_max=1048576</span><br></pre></td></tr></table></figure><p>保存关闭文件,运行命令<code>sudo sysctl -p</code>应用设置。<br>如果你对安全性没啥要求,现在就可以去最后一步了。<br><strong>如果你需要安全性,继续下一步。</strong>  </p><h2 id="保护XRDP会话"><a href="#保护XRDP会话" class="headerlink" title="保护XRDP会话"></a>保护XRDP会话</h2><p>实际上,RDP是不太安全的协议,但是我们可以通过证书文件来提高一点安全性<br>cd到<code>/etc/xrdp</code>并创建文件夹<code>certs</code>,运行命令<code>openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 3650</code>,按照说明设定证书。<br>然后输入以下两条命令,让XRDP可以读取这两个证书文件：  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 0644 /etc/xrdp/certs/cert.pem</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 0600 /etc/xrdp/certs/key.pem</span><br></pre></td></tr></table></figure><p>打开<code>xrdp.ini</code>,对照以下文本设定配置文件：  </p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">security_layer</span>=tls</span><br><span class="line"><span class="attr">certificate</span>=/etc/xrdp/certs/cert.pem</span><br><span class="line"><span class="attr">key_file</span>=/etc/xrdp/certs/key.pem</span><br><span class="line"><span class="attr">ssl_protocols</span>=TLSv1.<span class="number">2</span>, TLSv1.<span class="number">3</span></span><br></pre></td></tr></table></figure><p>保存关闭文件,证书也就设置完毕了。  </p><h2 id="启动并连接XRDP服务器"><a href="#启动并连接XRDP服务器" class="headerlink" title="启动并连接XRDP服务器"></a>启动并连接XRDP服务器</h2><h3 id="开放防火墙端口"><a href="#开放防火墙端口" class="headerlink" title="开放防火墙端口"></a>开放防火墙端口</h3><blockquote><p>[!TIP]<br>如果你系统上没有防火墙或者防火墙已关闭,那可以跳过这一步,但我还是建议开启防火墙以保护你服务器的安全性。</p></blockquote><p>我们假设你使用的是FirewallD,输入以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> firewall-cmd --add-port=3389/tcp --permanent</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --reload</span><br></pre></td></tr></table></figure><p>如果两个命令都返回success,继续下一步,如果你在<code>xrdp.ini</code>设置的是别的端口,将3389改为你设置的端口。<br>输入以下命令开启XRDP服务并使其在开机时启动：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> xrdp --now</span><br></pre></td></tr></table></figure><blockquote><p>[!NOTE]<br>如果你使用的是手机,我极力推荐RD Client 8,使用最新的RD Client会导致你的RDP会话极度卡顿  </p></blockquote><p>现在打开你的RDP客户端,连接你的服务器,登录,如果不出意外,你将会看到一个KDE Plasma桌面。<br><strong>享受你的远程桌面体验吧！</strong>  </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;在-RockyLinux-8-上设置-XRDP&quot;&gt;&lt;a href=&quot;#在-RockyLinux-8-上设置-XRDP&quot; class=&quot;headerlink&quot; title=&quot;在 RockyLinux 8 上设置 XRDP&quot;&gt;&lt;/a&gt;在 RockyLinux 8 上设</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="XRDP" scheme="http://example.com/tags/XRDP/"/>
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>qemu-macos-71-81</title>
+    <link href="http://example.com/2025/02/13/qemu-macos-71-81/"/>
+    <id>http://example.com/2025/02/13/qemu-macos-71-81/</id>
+    <published>2025-02-13T11:18:57.000Z</published>
+    <updated>2025-02-13T11:34:40.575Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用-Qemu-启动-MacOS-7-1-8-1-的任意版本"><a href="#使用-Qemu-启动-MacOS-7-1-8-1-的任意版本" class="headerlink" title="使用 Qemu 启动 MacOS 7.1~8.1 的任意版本"></a>使用 Qemu 启动 MacOS 7.1~8.1 的任意版本</h1><h2 id="安装预备"><a href="#安装预备" class="headerlink" title="安装预备"></a>安装预备</h2><ul><li>qemu-system-m68k  </li><li>有效的 Macintosh Quadra 800 ROM 文件  </li><li>这里以 MacOS 8.1 举例，所以你需要准备一份 MacOS 8.1 的光盘映像</li></ul><h2 id="启动虚拟机前"><a href="#启动虚拟机前" class="headerlink" title="启动虚拟机前"></a>启动虚拟机前</h2><ul><li>创建 pram.img，这个镜像将用于存放系统信息，比如分辨率，SCSI 引导顺序等等：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-img create -f raw pram.img 256b</span><br></pre></td></tr></table></figure><ul><li>创建硬盘映像，最大 2GB ，否则系统安装完毕后虚拟机将无法启动：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-img create -f raw macos.img 2GB</span><br></pre></td></tr></table></figure><ul><li>使用以下命令启动虚拟机：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-m68k \</span><br><span class="line">    -M q800 \</span><br><span class="line">    -m 128 \</span><br><span class="line">    -display sdl \</span><br><span class="line">    -bios Quadra800.rom \</span><br><span class="line">    -drive file=pram.img,format=raw,if=mtd \</span><br><span class="line">    -device scsi-hd,scsi-id=0,drive=hd0 \</span><br><span class="line">    -drive file=macos.img,media=disk,format=raw,if=none,id=hd0 \</span><br><span class="line">    -device scsi-cd,scsi-id=3,drive=cd0 \</span><br><span class="line">    -drive file=MacOS8.0.iso,media=cdrom,if=none,id=cd0</span><br></pre></td></tr></table></figure><h2 id="启动之后"><a href="#启动之后" class="headerlink" title="启动之后"></a>启动之后</h2><ul><li>初始化磁盘，然后正常进行安装即可</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;使用-Qemu-启动-MacOS-7-1-8-1-的任意版本&quot;&gt;&lt;a href=&quot;#使用-Qemu-启动-MacOS-7-1-8-1-的任意版本&quot; class=&quot;headerlink&quot; title=&quot;使用 Qemu 启动 MacOS 7.1~8.1 的任意版本&quot;&gt;</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="QEMU" scheme="http://example.com/tags/QEMU/"/>
+    
+    <category term="MacOS" scheme="http://example.com/tags/MacOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux-swap</title>
+    <link href="http://example.com/2025/02/13/linux-swap/"/>
+    <id>http://example.com/2025/02/13/linux-swap/</id>
+    <published>2025-02-13T11:17:44.000Z</published>
+    <updated>2025-02-13T11:34:40.605Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="备忘：Linux-中-Swap-交换分区设置教程，以及-Swap-大小与内存的关系"><a href="#备忘：Linux-中-Swap-交换分区设置教程，以及-Swap-大小与内存的关系" class="headerlink" title="备忘：Linux 中 Swap 交换分区设置教程，以及 Swap 大小与内存的关系"></a>备忘：Linux 中 Swap 交换分区设置教程，以及 Swap 大小与内存的关系</h1><h2 id="Swap-分区是什么"><a href="#Swap-分区是什么" class="headerlink" title="Swap 分区是什么"></a>Swap 分区是什么</h2><p>Swap（Swap 分区、Swap 内存），中文名是交换分区，类似于 Windows 中的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用，从而解决内存容量不足的情况。  </p><p>因此，Swap 分区的作用就是牺牲硬盘，增加内存，解决内存不够用或者爆满的问题。  </p><h2 id="Swap-大小选择"><a href="#Swap-大小选择" class="headerlink" title="Swap 大小选择"></a>Swap 大小选择</h2><p>Swap 合理的大小是与服务器的物理内存有关的,以下是个人推荐 Swap 大小：  </p><ol><li>内存 ≤ 4g：Swap 至少 4G  </li><li>内存 4~16G：Swap 至少 8G  </li><li>内存 16G~64G：Swap 至少 16G  </li><li>内存 64G~256G：Swap 至少 32G</li></ol><h2 id="Swap-分区设置教程"><a href="#Swap-分区设置教程" class="headerlink" title="Swap 分区设置教程"></a>Swap 分区设置教程</h2><ol><li>查看 Linux 当前内存使用情况：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure><p>如果是增加 swap 分区，则先把当前所有分区都关闭了：  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a</span><br></pre></td></tr></table></figure><ol start="2"><li>创建要作为 Swap 分区文件（其中 <code>/var/swapfile</code> 是文件位置，<code>bs*count</code> 是文件大下，例如以下命令就会创建一个 4G 的文件）：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=/var/swapfile bs=1M count=4096</span><br></pre></td></tr></table></figure><ol start="3"><li>建立 Swap 文件系统</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkswap /var/swapfile</span><br></pre></td></tr></table></figure><ol start="4"><li>启用 Swap 分区：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /var/swapfile</span><br></pre></td></tr></table></figure><ol start="5"><li>查看是否创建成功</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure><p>如果有 Swap 就说明创建成功了。  </p><ol start="6"><li>设置开机自动启用 Swap</li></ol><p>打开<code>/etc/fstab</code>，加入以下内容：  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/swapfile swap swap defaults 0 0</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;备忘：Linux-中-Swap-交换分区设置教程，以及-Swap-大小与内存的关系&quot;&gt;&lt;a href=&quot;#备忘：Linux-中-Swap-交换分区设置教程，以及-Swap-大小与内存的关系&quot; class=&quot;headerlink&quot; title=&quot;备忘：Linux 中</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dotnet-termux-iss</title>
+    <link href="http://example.com/2025/02/13/dotnet-termux-iss/"/>
+    <id>http://example.com/2025/02/13/dotnet-termux-iss/</id>
+    <published>2025-02-13T11:16:53.000Z</published>
+    <updated>2025-02-13T11:34:40.605Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="修复-dotnet-在-Termux-上的运行问题"><a href="#修复-dotnet-在-Termux-上的运行问题" class="headerlink" title="修复 dotnet 在 Termux 上的运行问题"></a>修复 dotnet 在 Termux 上的运行问题</h1><p>加入环境变量：  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DOTNET_GCHeapHardLimit=1C0000000</span><br></pre></td></tr></table></figure><p>原理：<br>dotnet 在启动时会尝试保留 256GB 运行内存空间，但 android(proot) 不允许这么干<br>我们需要做的就是限制 GC 可以分配的虚拟内存</p><p>其他（设置PATH环境变量）：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export DOTNET_ROOT=$HOME/.dotnet</span><br><span class="line">export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;修复-dotnet-在-Termux-上的运行问题&quot;&gt;&lt;a href=&quot;#修复-dotnet-在-Termux-上的运行问题&quot; class=&quot;headerlink&quot; title=&quot;修复 dotnet 在 Termux 上的运行问题&quot;&gt;&lt;/a&gt;修复 dotnet 在</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="dotnet" scheme="http://example.com/tags/dotnet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>forge-developing-1710</title>
+    <link href="http://example.com/2025/02/13/forge-developing-1710/"/>
+    <id>http://example.com/2025/02/13/forge-developing-1710/</id>
+    <published>2025-02-13T11:16:33.000Z</published>
+    <updated>2025-02-13T11:34:40.605Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="在现代-Minecraft-时期进行-Minecraft-Forge-1-7-10-Modding"><a href="#在现代-Minecraft-时期进行-Minecraft-Forge-1-7-10-Modding" class="headerlink" title="在现代 Minecraft 时期进行 Minecraft Forge 1.7.10 Modding"></a>在现代 Minecraft 时期进行 Minecraft Forge 1.7.10 Modding</h1><h1 id="环境搭配"><a href="#环境搭配" class="headerlink" title="环境搭配"></a>环境搭配</h1><p>本人通过摸索,最终的环境搭配是这样的：<br>JDK：Azul Zulu 8<br>IDEA：2021.2.4<br>MDK：<a href="https://github.com/anatawa12/ForgeGradle-1.2">原版MDK的一个Fork</a>  </p><p><strong>在现在,强烈不建议使用原版 Forge MDK！除非你非常确定你需要这么做。</strong>（因为你永远不知道现在缺了什么老版本开发需要的东西）  </p><h1 id="环境基本搭建"><a href="#环境基本搭建" class="headerlink" title="环境基本搭建"></a>环境基本搭建</h1><p>现在,先不要急着打开 Intellij IDEA。<br>打开你的终端（笔者这里是 Linux 环境）,输入：  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew setupDecompWorkspace idea</span><br></pre></td></tr></table></figure><p>一般来说此步骤会消耗大量的内存（但实际上4GB的内存就能轻松抗住了）<br>当看见<code>BUILD SUCCESSFUL</code>之后,打开 Intellij IDEA,然后导入此项目,开始你的老版本开发之旅吧！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;在现代-Minecraft-时期进行-Minecraft-Forge-1-7-10-Modding&quot;&gt;&lt;a href=&quot;#在现代-Minecraft-时期进行-Minecraft-Forge-1-7-10-Modding&quot; class=&quot;headerlink&quot; t</summary>
+      
+    
+    
+    
+    <category term="游戏" scheme="http://example.com/categories/%E6%B8%B8%E6%88%8F/"/>
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%B8%B8%E6%88%8F/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>
+    
+    <category term="MinecraftForge" scheme="http://example.com/tags/MinecraftForge/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>compile-xrdp-ub2004</title>
+    <link href="http://example.com/2025/02/13/compile-xrdp-ub2004/"/>
+    <id>http://example.com/2025/02/13/compile-xrdp-ub2004/</id>
+    <published>2025-02-13T11:16:08.000Z</published>
+    <updated>2025-02-13T11:34:40.625Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="记在-Ubuntu-20-04-下编译安装-XRDP"><a href="#记在-Ubuntu-20-04-下编译安装-XRDP" class="headerlink" title="记在 Ubuntu 20.04 下编译安装 XRDP"></a>记在 Ubuntu 20.04 下编译安装 XRDP</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装软件包<code>build-essential libx11-dev libpam-dev libxrandr-dev libxfixes-dev autoconf automake libtool-bin pkg-config libfreetype2-dev libimlib2-dev </code>,以上是 XRDP 的编译安装依赖<br>我们还需要以下软件包来编译安装 XorgXRDP：<code>xserver-xorg-dev</code>  </p><h2 id="编译安装-XRDP"><a href="#编译安装-XRDP" class="headerlink" title="编译安装 XRDP"></a>编译安装 XRDP</h2><p>以下命令在当时环境中全部在 root 用户下运行。  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/neutrinolabs/xrdp/releases/download/v0.10.1/xrdp-0.10.1.tar.gz</span><br><span class="line">tar xvf xrdp-0.10.1.tar.gz</span><br><span class="line"><span class="built_in">cd</span> xrdp-0.10.1</span><br><span class="line">./bootstrap</span><br><span class="line">./configure --enable-jpeg --enable-fuse --enable-pixman --with-freetype2=<span class="built_in">yes</span> --with-imlib2=<span class="built_in">yes</span> --with-x</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h2 id="编译安装-XorgXRDP"><a href="#编译安装-XorgXRDP" class="headerlink" title="编译安装 XorgXRDP"></a>编译安装 XorgXRDP</h2><p>以下命令在当时环境中全部在 root 用户下运行。  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.10.2/xorgxrdp-0.10.2.tar.gz</span><br><span class="line">tar xvf xorgxrdp-0.10.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> xorgxrdp-0.10.2</span><br><span class="line">./bootstrap</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h2 id="解决-无法启动-X-服务器-问题"><a href="#解决-无法启动-X-服务器-问题" class="headerlink" title="解决 无法启动 X 服务器 问题"></a>解决 无法启动 X 服务器 问题</h2><p>我在安装完毕 XRDP 后,尝试登录时,XRDP一直提示我“无法启动 X 服务器”<br>使用<code>journalctl -xe</code>查看日志,发现以下报错：<code>xrdp-sesman[1156]: /usr/lib/xorg/Xorg.wrap: Only console users are allowed to run the X server</code><br>初步判定是<code>/etc/X11/Xwrapper.config</code>阻止了 XRDP 启动 X 服务器<br>发现最后一行写着<code>allowed_users=console</code>,将其修改为<code>allowed_users=anybody</code>,重启 XRDP 服务,恢复正常运行。  </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;记在-Ubuntu-20-04-下编译安装-XRDP&quot;&gt;&lt;a href=&quot;#记在-Ubuntu-20-04-下编译安装-XRDP&quot; class=&quot;headerlink&quot; title=&quot;记在 Ubuntu 20.04 下编译安装 XRDP&quot;&gt;&lt;/a&gt;记在 Ubunt</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Ubuntu" scheme="http://example.com/tags/Ubuntu/"/>
+    
+    <category term="XRDP" scheme="http://example.com/tags/XRDP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2025/02/13/hello-world/"/>
+    <id>http://example.com/2025/02/13/hello-world/</id>
+    <published>2025-02-13T04:39:07.887Z</published>
+    <updated>2025-02-13T04:39:07.887Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
