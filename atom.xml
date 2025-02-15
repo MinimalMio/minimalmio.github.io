@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-02-15T14:32:08.785Z</updated>
+  <updated>2025-02-15T14:38:04.585Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2025/02/15/Qt%E7%AC%94%E8%AE%B01/"/>
     <id>http://example.com/2025/02/15/Qt%E7%AC%94%E8%AE%B01/</id>
     <published>2025-02-15T14:11:52.000Z</published>
-    <updated>2025-02-15T14:32:08.785Z</updated>
+    <updated>2025-02-15T14:38:04.585Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Qt笔记1-按钮"><a href="#Qt笔记1-按钮" class="headerlink" title="Qt笔记1 按钮"></a>Qt笔记1 按钮</h1><h2 id="创建按钮（代码版）"><a href="#创建按钮（代码版）" class="headerlink" title="创建按钮（代码版）"></a>创建按钮（代码版）</h2><p>本节所需头文件：<code>QPushButton</code></p><p>使用以下代码来创建按钮：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QPushButton* button = <span class="keyword">new</span> <span class="built_in">QPushButton</span>(<span class="string">&quot;这是一个按钮&quot;</span>, <span class="keyword">this</span>);</span><br></pre></td></tr></table></figure><h2 id="创建绑定函数"><a href="#创建绑定函数" class="headerlink" title="创建绑定函数"></a>创建绑定函数</h2><p>本节所需头文件：<code>QPushButton, QMessageBox</code></p><p>本例中的绑定函数如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里的函数叫什么都可以</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">onButtonClicked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    QMessageBox::<span class="built_in">information</span>(<span class="literal">nullptr</span>, <span class="string">&quot;Title&quot;</span>, <span class="string">&quot;Here is a message!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后创建按钮的函数绑定：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(button, &amp;QPushButton::clicked, onButtonClicked);</span><br></pre></td></tr></table></figure><p>构建并启动程序，点击一下按钮，你会发现一个对话框出现了。</p><p>上述绑定其实有一个简化版本，使用 lambda 表达式：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">connect</span>(button, &amp;QPushButton::clicked, []&#123;</span><br><span class="line">    QMessageBox::<span class="built_in">information</span>(<span class="literal">nullptr</span>, <span class="string">&quot;Title&quot;</span>, <span class="string">&quot;Here is a message!&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h2 id="来一点好玩的吧！"><a href="#来一点好玩的吧！" class="headerlink" title="来一点好玩的吧！"></a>来一点好玩的吧！</h2><p>设置按钮的坐标及大小（原点为窗口左上角）：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前两个值为按钮在窗口上的位置，后两个值是按钮的大小</span></span><br><span class="line">button-&gt;<span class="built_in">setGeometry</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>);</span><br></pre></td></tr></table></figure><p>只设置按钮的大小（要搞窗口布局的时候有用）：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button-&gt;<span class="built_in">setFixedSize</span>(<span class="number">100</span>, <span class="number">100</span>);</span><br></pre></td></tr></table></figure><p>另外一提，按钮的样式是使用<code>setStyleSheet</code>设置的，语法为 CSS。</p>]]></content>
     
@@ -32,6 +32,8 @@
       
     
     
+    
+    <category term="Qt" scheme="http://example.com/categories/Qt/"/>
     
     
     <category term="Qt" scheme="http://example.com/tags/Qt/"/>
@@ -245,7 +247,7 @@
     <link href="http://example.com/2025/02/13/forge-developing-1710/"/>
     <id>http://example.com/2025/02/13/forge-developing-1710/</id>
     <published>2025-02-13T11:16:33.000Z</published>
-    <updated>2025-02-13T11:34:40.605Z</updated>
+    <updated>2025-02-15T14:36:34.275Z</updated>
     
     <content type="html"><![CDATA[<h1 id="在现代-Minecraft-时期进行-Minecraft-Forge-1-7-10-Modding"><a href="#在现代-Minecraft-时期进行-Minecraft-Forge-1-7-10-Modding" class="headerlink" title="在现代 Minecraft 时期进行 Minecraft Forge 1.7.10 Modding"></a>在现代 Minecraft 时期进行 Minecraft Forge 1.7.10 Modding</h1><h1 id="环境搭配"><a href="#环境搭配" class="headerlink" title="环境搭配"></a>环境搭配</h1><p>本人通过摸索,最终的环境搭配是这样的：<br>JDK：Azul Zulu 8<br>IDEA：2021.2.4<br>MDK：<a href="https://github.com/anatawa12/ForgeGradle-1.2">原版MDK的一个Fork</a>  </p><p><strong>在现在,强烈不建议使用原版 Forge MDK！除非你非常确定你需要这么做。</strong>（因为你永远不知道现在缺了什么老版本开发需要的东西）  </p><h1 id="环境基本搭建"><a href="#环境基本搭建" class="headerlink" title="环境基本搭建"></a>环境基本搭建</h1><p>现在,先不要急着打开 Intellij IDEA。<br>打开你的终端（笔者这里是 Linux 环境）,输入：  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew setupDecompWorkspace idea</span><br></pre></td></tr></table></figure><p>一般来说此步骤会消耗大量的内存（但实际上4GB的内存就能轻松抗住了）<br>当看见<code>BUILD SUCCESSFUL</code>之后,打开 Intellij IDEA,然后导入此项目,开始你的老版本开发之旅吧！</p>]]></content>
     
@@ -257,9 +259,7 @@
     
     
     
-    <category term="游戏" scheme="http://example.com/categories/%E6%B8%B8%E6%88%8F/"/>
-    
-    <category term="技术" scheme="http://example.com/categories/%E6%B8%B8%E6%88%8F/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="Minecraft" scheme="http://example.com/tags/Minecraft/"/>

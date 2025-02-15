@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Regular.woff2" as="font">
+        <link rel="preload" crossorigin="crossorigin" href="/fonts/roboto/Roboto-Bold.woff2" as="font">
+    
+    
+    
+        <link rel="shortcut icon" href="/icons/favicon.ico">
+    
+
+    
+    
+        
+<link rel="stylesheet" href="/css/mdui.min.v1.0.0.css">
+
+    
+    
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+    
+    
+    <title>
+        
+            setting-xrdp-rocky8 | KSakura
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="KSakura" type="application/atom+xml">
+</head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  
+  <header class="mdui-appbar mdui-appbar-fixed">
+  <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+    <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+    <a href="/" class="mdui-typo-headline">KSakura</a>
+    <a href="/" class="header-subtitle mdui-typo-headline"></a>
+    <div class="mdui-toolbar-spacer"></div>
+    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+  </div>
+</header>
+
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
+    </div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+        <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+        <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">关于</a>
+    </div>
+
+    
+    <div id="sidebar-tab1" class="mdui-p-a-1">
+        <div class="mdui-list">
+            
+                
+                <a href="/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-home"></i>
+                    </div>
+                    <div class="mdui-list-item-content">主页</div>
+                </a>
+            
+                
+                <a href="/tags/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-bookmark"></i>
+                    </div>
+                    <div class="mdui-list-item-content">标签</div>
+                </a>
+            
+                
+                <a href="/categories/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-folder"></i>
+                    </div>
+                    <div class="mdui-list-item-content">分类</div>
+                </a>
+            
+                
+                <a href="/archives/" class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-archive"></i>
+                    </div>
+                    <div class="mdui-list-item-content">归档</div>
+                </a>
+            
+            <div class="mdui-list-item mdui-ripple">
+                <div class="mdui-list-item-icon">
+                    <i class="iconfont icon-moon"></i>
+                </div>
+                <div class="mdui-list-item-content">夜间模式</div>
+                <label class="mdui-switch" id="darkmode">
+                  <input type="checkbox" id="nightmode_switch"/>
+                  <i class="mdui-switch-icon"></i>
+                </label>
+            </div>           
+        </div>
+    </div>
+
+    
+    <div id="sidebar-tab2" class="mdui-p-a-1">
+        <div class="sidebar-overview">
+            <div class="sidebar-avatar">
+                
+                    <img src="/icons/avatar.gif"/>
+                
+            </div>
+            <div class="sidebar-author-name">Kitahashi Sakura</div>
+            <div class="sidebar-description"></div>
+        </div>
+        <div class="sidebar-links">
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-mail"></i></span>
+                    <a href="mailto:kitahashisakura@outlook.com" class="mdui-chip-title">E-Mail</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-github"></i></span>
+                    <a target="_blank" rel="noopener" href="https://github.com/MinimalMio" class="mdui-chip-title">GitHub</a>
+                </div>
+            
+                
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon"><i class="iconfont icon-telegram"></i></span>
+                    <a target="_blank" rel="noopener" href="https://t.me/Kitahashi_Sakura" class="mdui-chip-title">Telegram</a>
+                </div>
+            
+        </div>
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-icon">
+                        <i class="iconfont icon-link"></i>
+                    </div>
+                    <div class="mdui-list-item-content">友情链接</div>
+                    <div class="mdui-collapse-item-arrow">
+                        <i class="mdui-list-item-icon iconfont icon-angle-down"></i>
+                    </div>
+                </div>
+                <ul id="linksList" class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                    
+                        <a target="_blank" rel="noopener" href="https://garybear.cn/hexo-theme-meadow/" class="mdui-list-item mdui-ripple">
+                            Meadow说明文档
+                        </a>
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mdui-divider"></div>
+    
+    
+</aside>
+  
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <article id="article" class="mdui-card mdui-p-b-2 mdui-m-b-5">
+  <header class="mdui-card-media">
+    
+    
+      <div class="post-header"> 
+  <a class="post-header-title" href="/2025/02/13/setting-xrdp-rocky8/">setting-xrdp-rocky8</a>
+  <div class="post-header-meta">
+    <span>
+      <span class="iconfont icon-calendar"></span>
+      发布于:&nbsp;2025-02-13
+    </span>
+    <span>
+      <span class="iconfont icon-calendar-check"></span>
+      更新于:&nbsp;2025-02-13
+    </span>
+    <span>
+      <span class="iconfont icon-folder"></span>
+      分类于:&nbsp;<a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+    </span>
+    
+  </div>
+</div>   
+    
+
+
+
+    
+    
+    <div class="mdui-card-menu">
+    
+      <button class="mdui-btn mdui-btn-icon mdui-text-color-teal" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="iconfont icon-share"></i></button>
+      <ul class="mdui-menu" id="share_menu">
+        <li class="mdui-menu-item">
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=setting-xrdp-rocky8&url=http://example.com/2025/02/13/setting-xrdp-rocky8/&pic=http://example.com/null&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://twitter.com/intent/tweet?text=setting-xrdp-rocky8&url=http://example.com/2025/02/13/setting-xrdp-rocky8/&via=Kitahashi Sakura" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://example.com/2025/02/13/setting-xrdp-rocky8/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://plus.google.com/share?url=http://example.com/2025/02/13/setting-xrdp-rocky8/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://example.com/2025/02/13/setting-xrdp-rocky8/&title=setting-xrdp-rocky8" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=KSakura&title=setting-xrdp-rocky8&summary=&pics=http://example.com/null&url=http://example.com/2025/02/13/setting-xrdp-rocky8/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+        </li>
+        <li class="mdui-menu-item">
+          <a href="https://telegram.me/share/url?url=http://example.com/2025/02/13/setting-xrdp-rocky8/&text=setting-xrdp-rocky8" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+        </li>
+      </ul>
+    
+  </div>
+  </header>
+  
+  
+  
+  
+  <div class="post-tags">
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/XRDP/ >XRDP</a>
+      </i>
+    
+      <i class="iconfont icon-tag">
+        <a rel="tag" href = /tags/Linux/ >Linux</a>
+      </i>
+    
+  </div>
+
+  
+  <div class="mdui-card-content mdui-typo mdui-p-x-4">
+    <h1 id="在-RockyLinux-8-上设置-XRDP"><a href="#在-RockyLinux-8-上设置-XRDP" class="headerlink" title="在 RockyLinux 8 上设置 XRDP"></a>在 RockyLinux 8 上设置 XRDP</h1><h2 id="软件包预备"><a href="#软件包预备" class="headerlink" title="软件包预备"></a>软件包预备</h2><p>以下将以Xorg XRDP为例  </p>
+<blockquote>
+<p>[!TIP]<br>你将需要安装以下软件包：xorgxrdp xrdp,以及一个可以正常工作的桌面环境。<br>本文将以KDE Plasma作文桌面环境,原因见上一个文章  </p>
+</blockquote>
+<p>运行命令<code>sudo dnf install xorgxrdp xrdp</code>安装XRDP以及XRDP的Xorg附属（是不是这么叫？）  </p>
+<p>并运行命令<code>sudo dnf groupinstall &quot;KDE Plasma Workspaces&quot;</code>安装KDE Plasma桌面环境  </p>
+<h2 id="设置XRDP"><a href="#设置XRDP" class="headerlink" title="设置XRDP"></a>设置XRDP</h2><p>安装完XRDP后还不够,你还需要设置一下XRDP,否则连接体验<strong>非常卡顿</strong><br>打开<code>/etc/xrdp/xrdp.ini</code>文件,找到<code>tcp_send_buffer_bytes</code>和<code>tcp_recv_buffer_bytes</code>两项,将其改为适合你服务器带宽的数字（本人设置是1048756）<br>然后找到项<code>max_bpp</code>,将其改为16<br>然后将<code>[Xorg]</code>一直到<code>code=20</code>的所有行取消注释（如果有）,保存并关闭文件。<br>然后打开<code>/etc/sysctl.conf</code>文件,添加以下两项：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net.core.rmem_max=1048576  </span><br><span class="line">net.core.wmem_max=1048576</span><br></pre></td></tr></table></figure>
+<p>保存关闭文件,运行命令<code>sudo sysctl -p</code>应用设置。<br>如果你对安全性没啥要求,现在就可以去最后一步了。<br><strong>如果你需要安全性,继续下一步。</strong>  </p>
+<h2 id="保护XRDP会话"><a href="#保护XRDP会话" class="headerlink" title="保护XRDP会话"></a>保护XRDP会话</h2><p>实际上,RDP是不太安全的协议,但是我们可以通过证书文件来提高一点安全性<br>cd到<code>/etc/xrdp</code>并创建文件夹<code>certs</code>,运行命令<code>openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 3650</code>,按照说明设定证书。<br>然后输入以下两条命令,让XRDP可以读取这两个证书文件：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 0644 /etc/xrdp/certs/cert.pem</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 0600 /etc/xrdp/certs/key.pem</span><br></pre></td></tr></table></figure>
+<p>打开<code>xrdp.ini</code>,对照以下文本设定配置文件：  </p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">security_layer</span>=tls</span><br><span class="line"><span class="attr">certificate</span>=/etc/xrdp/certs/cert.pem</span><br><span class="line"><span class="attr">key_file</span>=/etc/xrdp/certs/key.pem</span><br><span class="line"><span class="attr">ssl_protocols</span>=TLSv1.<span class="number">2</span>, TLSv1.<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>保存关闭文件,证书也就设置完毕了。  </p>
+<h2 id="启动并连接XRDP服务器"><a href="#启动并连接XRDP服务器" class="headerlink" title="启动并连接XRDP服务器"></a>启动并连接XRDP服务器</h2><h3 id="开放防火墙端口"><a href="#开放防火墙端口" class="headerlink" title="开放防火墙端口"></a>开放防火墙端口</h3><blockquote>
+<p>[!TIP]<br>如果你系统上没有防火墙或者防火墙已关闭,那可以跳过这一步,但我还是建议开启防火墙以保护你服务器的安全性。</p>
+</blockquote>
+<p>我们假设你使用的是FirewallD,输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> firewall-cmd --add-port=3389/tcp --permanent</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>如果两个命令都返回success,继续下一步,如果你在<code>xrdp.ini</code>设置的是别的端口,将3389改为你设置的端口。<br>输入以下命令开启XRDP服务并使其在开机时启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> xrdp --now</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[!NOTE]<br>如果你使用的是手机,我极力推荐RD Client 8,使用最新的RD Client会导致你的RDP会话极度卡顿  </p>
+</blockquote>
+<p>现在打开你的RDP客户端,连接你的服务器,登录,如果不出意外,你将会看到一个KDE Plasma桌面。<br><strong>享受你的远程桌面体验吧！</strong>  </p>
+
+  </div>
+  <!--文末结束语-->
+  
+  <!--页脚广告-->
+  
+  <div class="mdui-divider"></div>
+  
+  <nav>
+    
+      <a rel="prev" class="post-nav-item mdui-float-left" href="/2025/02/13/uberbukkit-develping-b173/">
+        <i class="iconfont icon-angle-left"></i>
+        <span>uberbukkit-develping-b173</span>
+      </a>
+    
+    
+      <a rel="next" class="post-nav-item mdui-float-right" href="/2025/02/13/qemu-macos-71-81/">
+        <span>qemu-macos-71-81</span>
+        <i class="iconfont icon-angle-right"></i>
+      </a>
+    
+  </nav>
+</article>
+
+
+
+
+  <div class="toc-button"  style="z-index: 100;">
+    <button class="mdui-fab mdui-ripple mdui-color-teal" mdui-menu="{target: '#toc'}"><i class="iconfont icon-list"></i></button>
+    <ul class="mdui-menu" id="toc">
+      <li class="mdui-menu-item">
+        <a href="/2025/02/13/setting-xrdp-rocky8/" id="toc-header" class="mdui-ripple">文章目录</a>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8-RockyLinux-8-%E4%B8%8A%E8%AE%BE%E7%BD%AE-XRDP"><span class="toc-number">1.</span> <span class="toc-text">在 RockyLinux 8 上设置 XRDP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E9%A2%84%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">软件包预备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEXRDP"><span class="toc-number">1.2.</span> <span class="toc-text">设置XRDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4XRDP%E4%BC%9A%E8%AF%9D"><span class="toc-number">1.3.</span> <span class="toc-text">保护XRDP会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%B9%B6%E8%BF%9E%E6%8E%A5XRDP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">启动并连接XRDP服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.4.1.</span> <span class="toc-text">开放防火墙端口</span></a></li></ol></li></ol></li></ol>
+      </li>
+    </ul>
+  </div>
+
+
+
+  </main>
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+  <div class="mdui-container">
+    <div class="mdui-row">
+      
+        <a href="https://beian.miit.gov.cn" rel="noopener" target="_blank"></a>
+      
+      <span>
+        &copy; 2015 - 2025 
+        
+          <span style="color:#d9333f" class="iconfont icon-heart"></span>
+        
+        Kitahashi Sakura
+      </span>
+    </div>
+    <div class="mdui-row">
+      
+        <div class="mdui-col-xs-6 mdui-text-right">
+          <span>Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a></span>
+        </div>
+        <div class="mdui-col-xs-6 mdui-text-left">
+          <span>Theme: <a href="https://github.com/kb1000fx/Meadow" rel="noopener" target="_blank">Meadow</a></span>
+        </div>
+      
+    </div>
+    <div class="mdui-row">
+      
+    </div>
+ </div>
+</footer>
+  
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+  
+  
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+    
+<script src="/js/mdui.min.v1.0.0.js"></script>
+
+
+
+
+<script src="/js/meadow.js"></script>
+
+</body>
+</html >
