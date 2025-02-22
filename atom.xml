@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-02-15T14:38:04.585Z</updated>
+  <updated>2025-02-22T17:45:38.450Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Qt笔记2-界面布局</title>
+    <link href="http://example.com/2025/02/22/Qt%E7%AC%94%E8%AE%B02-%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80/"/>
+    <id>http://example.com/2025/02/22/Qt%E7%AC%94%E8%AE%B02-%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80/</id>
+    <published>2025-02-22T17:29:43.000Z</published>
+    <updated>2025-02-22T17:45:38.450Z</updated>
+    
+    <content type="html"><![CDATA[<p>继承 Qt笔记1，接下来是界面布局</p><h1 id="QVBoxLayout-竖直布局"><a href="#QVBoxLayout-竖直布局" class="headerlink" title="QVBoxLayout 竖直布局"></a>QVBoxLayout 竖直布局</h1><p>引入头文件：<code>QVBoxLayout</code></p><p>定义一个竖直布局：<code>QVBoxLayout* vBoxLayout = new QVBoxLayout();</code></p><p>添加布局到窗口：<code>vBoxLayout-&gt;addWidget(widgetName);</code></p><p>但是，按以上操作进行布局之后，你会发现窗口没有任何变化。<br>因为我们还需要定义一个中心部件。这个部件将会占据整个窗口。  </p><p>定义中心部件：<code>QWidget* centralWidget = new QWidget(this);</code></p><p>设置中心部件：<code>setCentralWidget(centralWidget)</code></p><p>设置布局： <code>centralWidget-&gt;setLayout(vBoxLayout);</code></p><p>水平布局（<code>QHBoxLayout</code>）同理，这里不多解释。</p><h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;mainwindow.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;./ui_mainwindow.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QVBoxLayout&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::<span class="built_in">MainWindow</span>(QWidget *parent)</span><br><span class="line">    : <span class="built_in">QMainWindow</span>(parent)</span><br><span class="line">    , <span class="built_in">ui</span>(<span class="keyword">new</span> Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;<span class="built_in">setupUi</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    QWidget* centralWidget = <span class="keyword">new</span> <span class="built_in">QWidget</span>(<span class="keyword">this</span>);</span><br><span class="line">    <span class="built_in">setCentralWidget</span>(centralWidget);</span><br><span class="line"></span><br><span class="line">    QVBoxLayout* vBoxLayout = <span class="keyword">new</span> <span class="built_in">QVBoxLayout</span>();</span><br><span class="line">    QPushButton* button = <span class="keyword">new</span> <span class="built_in">QPushButton</span>(<span class="string">&quot;01&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">    QPushButton* button2 = <span class="keyword">new</span> <span class="built_in">QPushButton</span>(<span class="string">&quot;02&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">    </span><br><span class="line">    button-&gt;<span class="built_in">setFixedSize</span>(<span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">    button2-&gt;<span class="built_in">setFixedSize</span>(<span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    button-&gt;<span class="built_in">setStyleSheet</span>(<span class="string">&quot;color: yellow;&quot;</span></span><br><span class="line">                          <span class="string">&quot;background-color: lightblue;&quot;</span></span><br><span class="line">                          <span class="string">&quot;font-size: 30px;&quot;</span>);</span><br><span class="line">    button-&gt;<span class="built_in">setFlat</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">connect</span>(button, &amp;QPushButton::clicked, []&#123;</span><br><span class="line">        QMessageBox::<span class="built_in">information</span>(<span class="literal">nullptr</span>, <span class="string">&quot;Title&quot;</span>, <span class="string">&quot;You clicked Button!&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置布局</span></span><br><span class="line">    vBoxLayout-&gt;<span class="built_in">addWidget</span>(button);</span><br><span class="line">    vBoxLayout-&gt;<span class="built_in">addWidget</span>(button2);</span><br><span class="line"></span><br><span class="line">    centralWidget-&gt;<span class="built_in">setLayout</span>(vBoxLayout);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~<span class="built_in">MainWindow</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> ui;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;继承 Qt笔记1，接下来是界面布局&lt;/p&gt;
+&lt;h1 id=&quot;QVBoxLayout-竖直布局&quot;&gt;&lt;a href=&quot;#QVBoxLayout-竖直布局&quot; class=&quot;headerlink&quot; title=&quot;QVBoxLayout 竖直布局&quot;&gt;&lt;/a&gt;QVBoxLayout 竖</summary>
+      
+    
+    
+    
+    <category term="Qt" scheme="http://example.com/categories/Qt/"/>
+    
+    
+    <category term="Qt" scheme="http://example.com/tags/Qt/"/>
+    
+    <category term="C++" scheme="http://example.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Qt笔记1</title>
