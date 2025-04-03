@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,20 +17,25 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>标签：Assembly - 北橋</title>
+  <title>RISC-V 前置基础 - 北橋</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="北橋">
-<meta property="og:url" content="http://minimalmio.github.io/tags/Assembly/index.html">
+    <meta name="description" content="ISA是什么？ISA（Instruction Set Architecture）（指令集架构）：是底层硬件电路面向上层软件程序提供的一层接口规范 CISC和RISC的区别CISC 复杂指令集：针对特定的功能实现特定的指令,导致指令数目比较多,但生成的程序长度相对较短。 RISC 精简指令集：只定义常用指令,对复杂的功能使用常用指令组合实现,这导致指令数目相对精简,但生成的程序长度较长。 现如今,C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RISC-V 前置基础">
+<meta property="og:url" content="http://minimalmio.github.io/2025/04/04/riscv-basic/index.html">
 <meta property="og:site_name" content="北橋">
+<meta property="og:description" content="ISA是什么？ISA（Instruction Set Architecture）（指令集架构）：是底层硬件电路面向上层软件程序提供的一层接口规范 CISC和RISC的区别CISC 复杂指令集：针对特定的功能实现特定的指令,导致指令数目比较多,但生成的程序长度相对较短。 RISC 精简指令集：只定义常用指令,对复杂的功能使用常用指令组合实现,这导致指令数目相对精简,但生成的程序长度较长。 现如今,C">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-03T19:35:35.000Z">
+<meta property="article:modified_time" content="2025-04-03T19:40:35.700Z">
 <meta property="article:author" content="Kitahashi Sakura">
+<meta property="article:tag" content="RISC-V">
 <meta name="twitter:card" content="summary">
   
   
   
-  
+  <meta name="keywords" content="RISC-V">
 
   <!-- feed -->
   
@@ -46,7 +51,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="undefined" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic1.imgdb.cn/item/67be252bd0e0a243d405c223.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">北橋</div><div class="sub cap">Make me drifting in endless darkness...</div></a></div></header>
@@ -58,48 +63,273 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/04/04/riscv-basic/"><span class="title">RISC-V 前置基础</span></a><a class="item title" href="/2025/04/04/riscv-asm-02/"><span class="title">RISC-V 汇编语言笔记 02</span></a><a class="item title" href="/2025/02/15/Qt%E7%AC%94%E8%AE%B01/"><span class="title">Qt笔记1 按钮</span></a><a class="item title" href="/2025/02/22/Qt%E7%AC%94%E8%AE%B02-%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80/"><span class="title">Qt笔记2 界面布局</span></a><a class="item title" href="/2025/02/13/compile-xrdp-ub2004/"><span class="title">记在 Ubuntu 20.04 下编译安装 XRDP</span></a><a class="item title" href="/2025/02/13/dotnet-termux-iss/"><span class="title">修复 dotnet 在 Termux 上的运行问题</span></a><a class="item title" href="/2025/02/13/forge-developing-1710/"><span class="title">在现代 Minecraft 时期进行 Minecraft Forge 1.7.10 Modding</span></a><a class="item title" href="/2025/02/13/linux-swap/"><span class="title">备忘：Linux 中 Swap 交换分区设置教程，以及 Swap 大小与内存的关系</span></a><a class="item title" href="/2025/02/13/qemu-macos-71-81/"><span class="title">使用 Qemu 启动 MacOS 7.1~8.1 的任意版本</span></a><a class="item title" href="/2025/02/13/setting-xrdp-rocky8/"><span class="title">在 RockyLinux 8 上设置 XRDP</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/MinimalMio" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic1.imgdb.cn/item/67be252bd0e0a243d405c223.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">北橋</div><div class="sub cap">Make me drifting in endless darkness...</div></a></div></header>
-
- 
 
 
 
 
-<div class="navbar top"><nav class="post"><a href="/">近期发布</a><a href="/categories/">分类</a><a class="active" href="/tags/">标签：Assembly</a><a href="/archives/">归档</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/2025/04/04/riscv-asm-02/">
-<article class="md-text"><h2 class="post-title">RISC-V 汇编语言笔记 02</h2><div class="excerpt"><p>RISC-V 汇编语言笔记 02RISC-V 汇编指令操作对象寄存器
-32 个通用寄存器，x0~x31
-x0 寄存器是一个很特殊的寄存器，读出来永远是 0，通常用于丢弃数据
-pc 寄存器
-全称 Program Counter 寄存器，通常不能直接访问...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-04-03T17:04:06.000Z">2025-04-04</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>RISC-V</span></span></div></article>
-</a><a class="post-card post" href="/2025/04/03/riscv-asm-01/">
-<article class="md-text"><h2 class="post-title">RISC-V 汇编语言笔记 01</h2><div class="excerpt"><p>RISC-V 汇编语言笔记 01汇编语言汇编语言（Assembly Language）是一门“低级”语言。
-汇编语言的缺点：  
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/RISC-V/">RISC-V</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-04-03T19:35:35.000Z">2025-04-04</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-04-03T19:40:35.700Z">2025-04-04</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>RISC-V 前置基础</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="ISA是什么？"><a href="#ISA是什么？" class="headerlink" title="ISA是什么？"></a><strong>ISA是什么？</strong></h2><p>ISA（Instruction Set Architecture）（指令集架构）：是底层硬件电路面向上层软件程序提供的一层<strong>接口规范</strong></p>
+<h2 id="CISC和RISC的区别"><a href="#CISC和RISC的区别" class="headerlink" title="CISC和RISC的区别"></a><strong>CISC和RISC的区别</strong></h2><p>CISC 复杂指令集：针对特定的功能实现特定的指令,导致指令数目比较多,但生成的程序长度相对较短。</p>
+<p>RISC 精简指令集：只定义常用指令,对复杂的功能使用常用指令组合实现,这导致指令数目相对精简,但生成的程序长度较长。</p>
+<p>现如今,CISC和RISC也有相互融合的趋势。</p>
+<h2 id="ISA的宽度是什么？"><a href="#ISA的宽度是什么？" class="headerlink" title="ISA的宽度是什么？"></a><strong>ISA的宽度是什么？</strong></h2><p>ISA的宽度指的是CPU中<strong>通用寄存器</strong>的宽度（二进制的位数）,这决定了寻址范围的大小,以及数据运算的能力。</p>
+<table>
+<thead>
+<tr>
+<th align="left">通用寄存器的宽度</th>
+<th align="left">寻址范围</th>
+<th align="left">应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">8位</td>
+<td align="left">2 ^ 8 &#x3D; 256</td>
+<td align="left">早期的单片机 8051</td>
+</tr>
+<tr>
+<td align="left">16位</td>
+<td align="left">2 ^ 16 &#x3D; 65536</td>
+<td align="left">x86系列的鼻祖8086,MSP430系列单片机</td>
+</tr>
+<tr>
+<td align="left">32位</td>
+<td align="left">2 ^ 32 &#x3D; 4294967296</td>
+<td align="left">早期的终端,个人计算机和服务器</td>
+</tr>
+<tr>
+<td align="left">64位</td>
+<td align="left">2 ^ 64 &#x3D; 18446744073709551616</td>
+<td align="left">目前主流的移动智能终端,个人计算机和服务器</td>
+</tr>
+</tbody></table>
+<p><strong>ISA的宽度与指令编码长度无关。</strong></p>
+<h2 id="RISC-V-ISA命名规范"><a href="#RISC-V-ISA命名规范" class="headerlink" title="RISC-V ISA命名规范"></a><strong>RISC-V ISA命名规范</strong></h2><ol>
+<li>ISA 命名格式：RV[###][abc…xyz]  <ol>
+<li>RV：用于标识RISC-V体系架构的前缀，即RISC-V的缩写。  </li>
+<li>[###]：{32,64,128} 用于标识处理器的字宽，也就是处理器的寄存器的宽度（单位为bit）。  </li>
+<li>[abc…xyz]：标识该处理器支持的指令集模块集合</li>
+</ol>
+</li>
+<li>例子：RV32IMA，RV64GC</li>
+</ol>
+<h2 id="增量ISA-模块化ISA是什么"><a href="#增量ISA-模块化ISA是什么" class="headerlink" title="增量ISA &#x2F; 模块化ISA是什么"></a><strong>增量ISA &#x2F; 模块化ISA是什么</strong></h2><p>增量ISA：计算机体系架构的传统方法，同一个体系架构下的新一代处理器不仅实现了新的ISA扩展，还必须实现过去的所有扩展，目的是为了保持向后的二进制兼容性，典型的，以80x86为代表。</p>
+<p>模块化ISA：由1个基本整数指令集+多个可选的扩展指令集组成。基础指令集是固定的，永远不会改变。（RISC ISA）</p>
+<h2 id="基本整数（Integer）指令集"><a href="#基本整数（Integer）指令集" class="headerlink" title="基本整数（Integer）指令集"></a><strong>基本整数（Integer）指令集</strong></h2><p>唯一强制要求实现的基础指令集，其他指令集都是可选的扩展模块。</p>
+<table>
+<thead>
+<tr>
+<th align="left">基本指令集</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">RV32I</td>
+<td align="left">32位整数指令集</td>
+</tr>
+<tr>
+<td align="left">RV32E</td>
+<td align="left">RV32I的子集，用于小型的嵌入式场景。</td>
+</tr>
+<tr>
+<td align="left">RV64I</td>
+<td align="left">64位整数指令集，兼容RV32I</td>
+</tr>
+<tr>
+<td align="left">RV128I</td>
+<td align="left">128位整数指令集，兼容RV32I和RV64I</td>
+</tr>
+</tbody></table>
+<h1 id="扩展模块指令集"><a href="#扩展模块指令集" class="headerlink" title="扩展模块指令集"></a><strong>扩展模块指令集</strong></h1><ul>
+<li>RISC-V允许在实现中以可选的形式实现其他标准化和非标准化的指令集扩展。</li>
+<li>特定组合“IMAFD”被称为“通用（General）”组合，用英文字母G表示。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">扩展指令集</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">M</td>
+<td align="left">整数乘法（Multiplication）与除法指令集</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="left">存储器原子（Atomic）指令集</td>
+</tr>
+<tr>
+<td align="left">F</td>
+<td align="left">单精度（32bit）浮点（Float）指令集</td>
+</tr>
+<tr>
+<td align="left">D</td>
+<td align="left">双精度（64bit）浮点（Double）指令集</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">压缩（Compressed）指令集</td>
+</tr>
+<tr>
+<td align="left">……</td>
+<td align="left">其他标准化和未标准化的指令集</td>
+</tr>
+</tbody></table>
+<p>例子：</p>
+<ul>
+<li>RV32I：最基本的RISC-V实现</li>
+<li>RV32IMAC：32位实现，支持Integer+Multiply+Atomic+Compressed</li>
+<li>RV64GC：64位实现，支持IMAFDC</li>
+</ul>
+<h1 id="通用寄存器（General-Purpose-Registers）"><a href="#通用寄存器（General-Purpose-Registers）" class="headerlink" title="通用寄存器（General Purpose Registers）"></a><strong>通用寄存器（General Purpose Registers）</strong></h1><ul>
+<li>RISC-V的Unprivileged Specification定义了32个通用寄存器以及一个PC<ul>
+<li>对RV32I&#x2F;RV64I&#x2F;RV128I都一样。</li>
+<li>如果实现支持F&#x2F;D扩展则需要额外支持32个浮点（Float Point）寄存器。</li>
+<li>RV32E将32个通用寄存器缩减为16个。</li>
+</ul>
+</li>
+<li>寄存器的宽度由ISA指定<ul>
+<li>RV32的寄存器宽度为32位</li>
+<li>RV64的寄存器宽度为64位，以此类推。</li>
+</ul>
+</li>
+<li>每个寄存器具体编程时有特定的用途以及各自的别名，由RISC-V Application Binary Interface（ABI）定义。</li>
+</ul>
+<h2 id="Hart（重要概念）"><a href="#Hart（重要概念）" class="headerlink" title="Hart（重要概念）"></a><strong>Hart（重要概念）</strong></h2><p>HART &#x3D; <strong>Har</strong>dware <strong>T</strong>hread（硬件线程）</p>
+<p>一个Hart可以理解为一个<strong>虚拟CPU</strong></p>
+<p>从软件在给定执行环境中运行的角度来看，Hart 是一种资源，它能够在该执行环境中自主（autonomously）获取并执行 RISC-V 指令。</p>
+<h2 id="特权级别（Privileged-level）"><a href="#特权级别（Privileged-level）" class="headerlink" title="特权级别（Privileged level）"></a><strong>特权级别（Privileged level）</strong></h2><p>RISC-V的Privileged Specification定义了三个特权级别（privileged level）。</p>
+<table>
+<thead>
+<tr>
+<th align="left">级别</th>
+<th align="left">编码</th>
+<th align="left">名称</th>
+<th align="left">缩写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">00</td>
+<td align="left">用户&#x2F;应用程序（User&#x2F;Application）</td>
+<td align="left">U</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">01</td>
+<td align="left">Supervisior</td>
+<td align="left">S</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">10</td>
+<td align="left"><em>Reserved</em></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">11</td>
+<td align="left">Machine</td>
+<td align="left">M</td>
+</tr>
+</tbody></table>
+<p>Machine是最高的级别，所有的实现都需要支持。</p>
+<p>上电时，默认在Machine态（与Intel x86的实模式类似）。</p>
+<p>可选的Debug级别：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Number of levels</th>
+<th align="left">Supported Modes（支持的模式）</th>
+<th align="left">Intented Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">M</td>
+<td align="left">简单的嵌入式系统</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">M,U</td>
+<td align="left">安全的嵌入式系统</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">M,S,U</td>
+<td align="left">正在运行类Unix系统的系统</td>
+</tr>
+</tbody></table>
+<h2 id="扩展：什么是用户态和内核态？"><a href="#扩展：什么是用户态和内核态？" class="headerlink" title="扩展：什么是用户态和内核态？"></a><strong>扩展：什么是用户态和内核态？</strong></h2><p>简单来说内核态就是操作系统运行线程，用户态就是线程执行用户自己的程序。</p>
+<p>用户态：不能直接使用系统资源，也不能改变CPU的工作系统，并且只能访问这个用户程序自己的存储空间。</p>
+<p>内核态：可以使用计算机所有的硬件资源。系统中既有操作系统的程序，也有普通用户程序，为了安全性和稳定性，操作系统的程序不能直接访问，这就是内核态。即需要执行操作系统的程序就必须转换到内核态才能执行。</p>
+<h2 id="扩展：为什么要区分用户态和内核态？"><a href="#扩展：为什么要区分用户态和内核态？" class="headerlink" title="扩展：为什么要区分用户态和内核态？"></a><strong>扩展：为什么要区分用户态和内核态？</strong></h2><p>在CPU的所有指令中，有一些指令是十分危险的，如果错用，将导致整个系统崩溃。比如：清内存，设置时钟等。如果所有的程序都能使用这些指令，那么你的系统一天死机N次也就不足为奇了。</p>
+<p>所以，CPU将指令分为特权指令和非特权指令。对于那些危险的指令，只允许操作系统以及相关模块使用，普通的应用程序只能使用那些不会造成灾难的指令。</p>
+<p>如此设置的本质意义是进行权限保护。限定用户的程序不能乱搞操作系统。如果人人都可以任意读写任意地址空间软件管理便会乱套。</p>
+<h2 id="Control-and-Status-Registers（CSR）"><a href="#Control-and-Status-Registers（CSR）" class="headerlink" title="Control and Status Registers（CSR）"></a><strong>Control and Status Registers（CSR）</strong></h2><p>![img][<a target="_blank" rel="noopener" href="https://img.picui.cn/free/2025/04/04/67eee4230013a.jpeg]">https://img.picui.cn/free/2025/04/04/67eee4230013a.jpeg]</a></p>
+<p>不同的特权级别下时分别对应各自的一套Registers（CSR），用于控制（Control）控制和获取相应Level下的处理器工作状态。</p>
+<p>高级别的特权级别下可以访问低级别的CSR，譬如Machine Level下可以访问Supervisior&#x2F;User Level的CSR，以此类推，但反之不可以。</p>
+<p>RISC-V定义了专门用于操作CSR的指令。</p>
+<p>RISC-V定义了特定的指令可以用于在不同特权级别之间进行切换。</p>
+<h2 id="内存管理与保护"><a href="#内存管理与保护" class="headerlink" title="内存管理与保护"></a><strong>内存管理与保护</strong></h2><p>物理内存保护（Physical Memory Protection，PMP）：</p>
+<ul>
+<li>允许M模式指定U模式可以访问的内存地址。</li>
+<li>支持R&#x2F;W&#x2F;X，以及Lock。</li>
+</ul>
+<p>虚拟内存（Virtual Memory）</p>
+<ul>
+<li>需要支持Supervisior Level</li>
+<li>用于实现高级的操作系统特性（Unix&#x2F;Linux）</li>
+<li>多种映射方式Sv32&#x2F;Sv39&#x2F;Sv48</li>
+</ul>
 
-难写  
-难读  
-难移植
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/04/04/riscv-asm-02/">RISC-V 汇编语言笔记 02</a></div></section></div>
 
-汇编语言的优点：
 
-灵活  
-强大
 
-汇编语言的应用场景：
 
-需要直接访问底层硬件的地方...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-04-02T19:06:06.000Z">2025-04-03</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>RISC-V</span></span></div></article>
-</a></div>
 
 
 <footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/">分类</a><a href="/">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs15">社交</span><a target="_blank" rel="noopener" href="https://github.com/MinimalMio">Github</a><a target="_blank" rel="noopener" href="https://t.me/Kitahashi_Sakura">Telegram</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a><a target="_blank" rel="noopener" href="https://github.com/MinimalMio">GitHub</a></div></div><div class="text"><p>本站由 <a href="/">Kitahashi Sakura</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ISA%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">ISA是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CISC%E5%92%8CRISC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">CISC和RISC的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ISA%E7%9A%84%E5%AE%BD%E5%BA%A6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">ISA的宽度是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-ISA%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">RISC-V ISA命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E9%87%8FISA-%E6%A8%A1%E5%9D%97%E5%8C%96ISA%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">增量ISA &#x2F; 模块化ISA是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B4%E6%95%B0%EF%BC%88Integer%EF%BC%89%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-text">基本整数（Integer）指令集</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%A8%A1%E5%9D%97%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-text">扩展模块指令集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88General-Purpose-Registers%EF%BC%89"><span class="toc-text">通用寄存器（General Purpose Registers）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hart%EF%BC%88%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5%EF%BC%89"><span class="toc-text">Hart（重要概念）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%9D%83%E7%BA%A7%E5%88%AB%EF%BC%88Privileged-level%EF%BC%89"><span class="toc-text">特权级别（Privileged level）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%EF%BC%9F"><span class="toc-text">扩展：什么是用户态和内核态？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8C%BA%E5%88%86%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%EF%BC%9F"><span class="toc-text">扩展：为什么要区分用户态和内核态？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Control-and-Status-Registers%EF%BC%88CSR%EF%BC%89"><span class="toc-text">Control and Status Registers（CSR）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%9D%E6%8A%A4"><span class="toc-text">内存管理与保护</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
