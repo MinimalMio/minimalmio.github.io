@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="北橋">
 <meta property="og:description" content="ISA是什么？ISA（Instruction Set Architecture）（指令集架构）：是底层硬件电路面向上层软件程序提供的一层接口规范 CISC和RISC的区别CISC 复杂指令集：针对特定的功能实现特定的指令,导致指令数目比较多,但生成的程序长度相对较短。 RISC 精简指令集：只定义常用指令,对复杂的功能使用常用指令组合实现,这导致指令数目相对精简,但生成的程序长度较长。 现如今,C">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.picui.cn/free/2025/04/04/67eee4230013a.jpeg">
 <meta property="article:published_time" content="2025-04-03T19:35:35.000Z">
-<meta property="article:modified_time" content="2025-04-03T19:40:35.700Z">
+<meta property="article:modified_time" content="2025-04-03T19:41:29.476Z">
 <meta property="article:author" content="Kitahashi Sakura">
 <meta property="article:tag" content="RISC-V">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.picui.cn/free/2025/04/04/67eee4230013a.jpeg">
   
   
   
@@ -78,7 +80,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/RISC-V/">RISC-V</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-04-03T19:35:35.000Z">2025-04-04</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-04-03T19:40:35.700Z">2025-04-04</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-04-03T19:35:35.000Z">2025-04-04</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-04-03T19:41:29.476Z">2025-04-04</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -287,7 +289,7 @@
 <h2 id="扩展：为什么要区分用户态和内核态？"><a href="#扩展：为什么要区分用户态和内核态？" class="headerlink" title="扩展：为什么要区分用户态和内核态？"></a><strong>扩展：为什么要区分用户态和内核态？</strong></h2><p>在CPU的所有指令中，有一些指令是十分危险的，如果错用，将导致整个系统崩溃。比如：清内存，设置时钟等。如果所有的程序都能使用这些指令，那么你的系统一天死机N次也就不足为奇了。</p>
 <p>所以，CPU将指令分为特权指令和非特权指令。对于那些危险的指令，只允许操作系统以及相关模块使用，普通的应用程序只能使用那些不会造成灾难的指令。</p>
 <p>如此设置的本质意义是进行权限保护。限定用户的程序不能乱搞操作系统。如果人人都可以任意读写任意地址空间软件管理便会乱套。</p>
-<h2 id="Control-and-Status-Registers（CSR）"><a href="#Control-and-Status-Registers（CSR）" class="headerlink" title="Control and Status Registers（CSR）"></a><strong>Control and Status Registers（CSR）</strong></h2><p>![img][<a target="_blank" rel="noopener" href="https://img.picui.cn/free/2025/04/04/67eee4230013a.jpeg]">https://img.picui.cn/free/2025/04/04/67eee4230013a.jpeg]</a></p>
+<h2 id="Control-and-Status-Registers（CSR）"><a href="#Control-and-Status-Registers（CSR）" class="headerlink" title="Control and Status Registers（CSR）"></a><strong>Control and Status Registers（CSR）</strong></h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://img.picui.cn/free/2025/04/04/67eee4230013a.jpeg" alt="img"></p>
 <p>不同的特权级别下时分别对应各自的一套Registers（CSR），用于控制（Control）控制和获取相应Level下的处理器工作状态。</p>
 <p>高级别的特权级别下可以访问低级别的CSR，譬如Machine Level下可以访问Supervisior&#x2F;User Level的CSR，以此类推，但反之不可以。</p>
 <p>RISC-V定义了专门用于操作CSR的指令。</p>
