@@ -17,24 +17,26 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>友情链接 - 北橋</title>
+  <title>RISC-V 汇编语言笔记 4 - 北橋</title>
 
   
-    <meta name="description" content="这里的部分链接可能只是个单向链接而已啦～ Adpro的blogBenxp的小破站KeqingMoe">
-<meta property="og:type" content="website">
-<meta property="og:title" content="友情链接">
-<meta property="og:url" content="http://minimalmio.github.io/friends/index.html">
+    <meta name="description" content="逻辑运算指令   指令 格式 语法 描述 例子    AND R-type AND RD, RS1, RS2 RD &#x3D; RS1 &amp; RS2 and x5, x6, x7   OR R-type OR RD, RS1, RS2 RD &#x3D; RS1 | RS2 or x5, x6, x7   XOR R-type XOR RD, RS1, RS2 RD &#x3D; RS1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RISC-V 汇编语言笔记 4">
+<meta property="og:url" content="http://minimalmio.github.io/2025/04/07/riscv-asm-04/index.html">
 <meta property="og:site_name" content="北橋">
-<meta property="og:description" content="这里的部分链接可能只是个单向链接而已啦～ Adpro的blogBenxp的小破站KeqingMoe">
+<meta property="og:description" content="逻辑运算指令   指令 格式 语法 描述 例子    AND R-type AND RD, RS1, RS2 RD &#x3D; RS1 &amp; RS2 and x5, x6, x7   OR R-type OR RD, RS1, RS2 RD &#x3D; RS1 | RS2 or x5, x6, x7   XOR R-type XOR RD, RS1, RS2 RD &#x3D; RS1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-05T17:37:43.000Z">
-<meta property="article:modified_time" content="2025-04-05T17:52:33.776Z">
+<meta property="article:published_time" content="2025-04-06T16:38:11.000Z">
+<meta property="article:modified_time" content="2025-04-06T16:39:42.800Z">
 <meta property="article:author" content="Kitahashi Sakura">
+<meta property="article:tag" content="RISC-V">
+<meta property="article:tag" content="Assembly">
 <meta name="twitter:card" content="summary">
   
   
   
-  
+  <meta name="keywords" content="RISC-V,Assembly">
 
   <!-- feed -->
   
@@ -50,7 +52,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa content tech" id="start" layout="page" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic1.imgdb.cn/item/67be252bd0e0a243d405c223.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">北橋</div><div class="sub cap">Make me drifting in endless darkness...</div></a></div></header>
@@ -62,6 +64,8 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/04/07/riscv-asm-04/"><span class="title">RISC-V 汇编语言笔记 4</span></a><a class="item title" href="/2025/04/06/riscv-asm-03/"><span class="title">RISC-V 汇编语言笔记 03</span></a><a class="item title" href="/2025/04/03/riscv-asm-01/"><span class="title">RISC-V 汇编语言笔记 01</span></a><a class="item title" href="/2025/04/04/riscv-asm-02/"><span class="title">RISC-V 汇编语言笔记 02</span></a><a class="item title" href="/2025/04/04/riscv-basic/"><span class="title">RISC-V 前置基础</span></a><a class="item title" href="/2025/02/15/Qt%E7%AC%94%E8%AE%B01/"><span class="title">Qt笔记1 按钮</span></a><a class="item title" href="/2025/02/22/Qt%E7%AC%94%E8%AE%B02-%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80/"><span class="title">Qt笔记2 界面布局</span></a><a class="item title" href="/2025/02/13/compile-xrdp-ub2004/"><span class="title">记在 Ubuntu 20.04 下编译安装 XRDP</span></a><a class="item title" href="/2025/02/13/dotnet-termux-iss/"><span class="title">修复 dotnet 在 Termux 上的运行问题</span></a><a class="item title" href="/2025/02/13/forge-developing-1710/"><span class="title">在现代 Minecraft 时期进行 Minecraft Forge 1.7.10 Modding</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/MinimalMio" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/></a></div></footer>
@@ -74,31 +78,258 @@
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
-
-  <span class="sep"></span>
-  <a class="cap breadcrumb" href="/friends/index.html">友情链接</a>
-  </div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-04-05T17:37:43.000Z">2025-04-06</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-04-05T17:52:33.776Z">2025-04-06</time></span></div></div></div>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/RISC-V/">RISC-V</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-04-06T16:38:11.000Z">2025-04-07</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-04-06T16:39:42.800Z">2025-04-07</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>友情链接</span></h1>
+        <h1 class="text title"><span>RISC-V 汇编语言笔记 4</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><p>这里的部分链接可能只是个单向链接而已啦～</p>
-<p><a target="_blank" rel="noopener" href="https://blog.adproqwq.top/">Adpro的blog</a><br><a target="_blank" rel="noopener" href="https://benxpawa.github.io/">Benxp的小破站</a><br><a target="_blank" rel="noopener" href="https://keqing.moe/">KeqingMoe</a>  </p>
+  </div><article class="md-text content"><h2 id="逻辑运算指令"><a href="#逻辑运算指令" class="headerlink" title="逻辑运算指令"></a>逻辑运算指令</h2><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">格式</th>
+<th align="left">语法</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">AND</td>
+<td align="left">R-type</td>
+<td align="left">AND RD, RS1, RS2</td>
+<td align="left">RD &#x3D; RS1 &amp; RS2</td>
+<td align="left">and x5, x6, x7</td>
+</tr>
+<tr>
+<td align="left">OR</td>
+<td align="left">R-type</td>
+<td align="left">OR RD, RS1, RS2</td>
+<td align="left">RD &#x3D; RS1 | RS2</td>
+<td align="left">or x5, x6, x7</td>
+</tr>
+<tr>
+<td align="left">XOR</td>
+<td align="left">R-type</td>
+<td align="left">XOR RD, RS1, RS2</td>
+<td align="left">RD &#x3D; RS1 ^ RS2</td>
+<td align="left">xor x5, x6, x7</td>
+</tr>
+<tr>
+<td align="left">ANDI</td>
+<td align="left">I-type</td>
+<td align="left">AND RD, RS1, IMM</td>
+<td align="left">RD &#x3D; RS1 &amp; IMM</td>
+<td align="left">and x5, x6, 20</td>
+</tr>
+<tr>
+<td align="left">ORI</td>
+<td align="left">I-type</td>
+<td align="left">OR RD, RS1, IMM</td>
+<td align="left">RD &#x3D; RS1 | IMM</td>
+<td align="left">or x5, x6, 20</td>
+</tr>
+<tr>
+<td align="left">XORI</td>
+<td align="left">I-type</td>
+<td align="left">XOR RD, RS1, IMM</td>
+<td align="left">RD &#x3D; RS1 ^ IMM</td>
+<td align="left">xor x5, x6, 20</td>
+</tr>
+</tbody></table>
+<ul>
+<li>所有的逻辑运算指令都是按位操作</li>
+<li>XOR（eXclusive OR，异或）：两个 bit 值不同（异）则取值 1，如果两个 bit 相同则取值 0</li>
+</ul>
+<h2 id="移位运算指令"><a href="#移位运算指令" class="headerlink" title="移位运算指令"></a>移位运算指令</h2><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">格式</th>
+<th align="left">语法</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SLL</td>
+<td align="left">R-type</td>
+<td align="left">SLL RD, RS1, RS2</td>
+<td align="left">逻辑左移（Shift Left Logical）RD &#x3D; RS1 &lt;&lt; RS2</td>
+<td align="left">sll x5, x6, x7</td>
+</tr>
+<tr>
+<td align="left">SRL</td>
+<td align="left">R-type</td>
+<td align="left">SRL RD, RS1, RS2</td>
+<td align="left">逻辑右移（Shift Right Logical）RD &#x3D; RS1 &gt;&gt; RS2</td>
+<td align="left">srl x5, x6, x7</td>
+</tr>
+<tr>
+<td align="left">SLLI</td>
+<td align="left">I-type</td>
+<td align="left">SLLI RD, RS1, IMM</td>
+<td align="left">逻辑左移立即数（Shift Left Logical Immediate）RD &#x3D; RS1 &lt;&lt; IMM</td>
+<td align="left">slli x5, x6, 3</td>
+</tr>
+<tr>
+<td align="left">SRLI</td>
+<td align="left">I-type</td>
+<td align="left">SRLI RD, RS1, IMM</td>
+<td align="left">逻辑右移立即数（Shift Right Logical Immediate）RD &#x3D; RS1 &gt;&gt; IMM</td>
+<td align="left">srli x5, x6, 3</td>
+</tr>
+<tr>
+<td align="left">SRA</td>
+<td align="left">R-type</td>
+<td align="left">SRA RD, RS1, RS2</td>
+<td align="left">算术右移（Shift Right Arithmetic）RD &#x3D; RS1 &gt;&gt; RS2</td>
+<td align="left">sra x5, x6, x7</td>
+</tr>
+<tr>
+<td align="left">SRAI</td>
+<td align="left">I-type</td>
+<td align="left">SRAI RD, RS1, IMM</td>
+<td align="left">算术右移立即数（Shift Right Arithmetic Immediate）RD &#x3D; RS1 &gt;&gt; IMM</td>
+<td align="left">sra x5, x6, 3</td>
+</tr>
+</tbody></table>
+<ul>
+<li>逻辑移位<ul>
+<li>无论是逻辑左移还是逻辑右移，补足的都是 0</li>
+</ul>
+</li>
+<li>算术移位<ul>
+<li>算术移位时按照符号位值补足</li>
+<li>算术移位只有算术右移，没有算术左移<ul>
+<li>因为右移的话符号位（最高位）就不存在了，对它来说这就没有意义了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="内存读写指令"><a href="#内存读写指令" class="headerlink" title="内存读写指令"></a>内存读写指令</h2><h3 id="内存读指令：Load，将数据从内存读入寄存器"><a href="#内存读指令：Load，将数据从内存读入寄存器" class="headerlink" title="内存读指令：Load，将数据从内存读入寄存器"></a>内存读指令：Load，将数据从内存读入寄存器</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">格式</th>
+<th align="left">语法</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">LB</td>
+<td align="left">I-type</td>
+<td align="left">LB RD, IMM(RS1)</td>
+<td align="left">Load Byte，从内存中读取一个 8 bits 的数据到 RD 中，内存地址 &#x3D; RS1 + IMM，<strong>数据在保存到 RD 之前会执行 sign-extended</strong></td>
+<td align="left">lb x5, 40(x6)</td>
+</tr>
+<tr>
+<td align="left">LBU</td>
+<td align="left">I-type</td>
+<td align="left">LBU RD, IMM(RS1)</td>
+<td align="left">Load Byte Unsigned，从内存中读取一个 8 bits 的数据到 RD 中，内存地址 &#x3D; RS1 + IMM，<strong>数据在保存到 RD 之前会执行 zero-extended</strong></td>
+<td align="left">lbu x5, 40(x6)</td>
+</tr>
+<tr>
+<td align="left">LH</td>
+<td align="left">I-type</td>
+<td align="left">LH RD, IMM(RS1)</td>
+<td align="left">Load Halfword，从内存中读取一个 16 bits 的数据到 RD 中，内存地址 &#x3D; RS1 + IMM，<strong>数据在保存到 RD 之前会执行 sign-extended</strong></td>
+<td align="left">lh x5, 40(x6)</td>
+</tr>
+<tr>
+<td align="left">LHU</td>
+<td align="left">I-type</td>
+<td align="left">LHU RD, IMM(RS1)</td>
+<td align="left">Load Halfword Unsigned，从内存中读取一个 16 bits 的数据到 RD 中，内存地址 &#x3D; RS1 + IMM，<strong>数据在保存到 RD 之前会执行 zero-extended</strong></td>
+<td align="left">lhu x5, 40(x6)</td>
+</tr>
+<tr>
+<td align="left">LW</td>
+<td align="left">I-type</td>
+<td align="left">LW RD, IMM(RS1)</td>
+<td align="left">Load Word，从内存中读取一个 32 bits 的数据到 RD 中，内存地址 &#x3D; RS1 + IMM</td>
+<td align="left">lw x5, 40(x6)</td>
+</tr>
+</tbody></table>
+<ul>
+<li>注意：IMM 给出的偏移量范围是 [-2048, 2047]</li>
+<li>Halfword 是 2 个字节，Word 是 4 个字节</li>
+</ul>
+<h3 id="内存写指令：Store，将数据从寄存器写出到内存"><a href="#内存写指令：Store，将数据从寄存器写出到内存" class="headerlink" title="内存写指令：Store，将数据从寄存器写出到内存"></a>内存写指令：Store，将数据从寄存器写出到内存</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">格式</th>
+<th align="left">语法</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SB</td>
+<td align="left">S-type</td>
+<td align="left">SB RS2, IMM(RS1)</td>
+<td align="left">Store Byte，将 RS2 寄存器中的低 8 bits 的数据写出到内存中，内存地址 &#x3D; RS1 + IMM</td>
+<td align="left">sb x5, 40(x6)</td>
+</tr>
+<tr>
+<td align="left">SH</td>
+<td align="left">S-type</td>
+<td align="left">SH RS2, IMM(RS1)</td>
+<td align="left">Store Halfword，将 RS2 寄存器中低 16 bits 的数据写出到内存中，内存地址 &#x3D; RS1 + IMM</td>
+<td align="left">sh x5, 40(x6)</td>
+</tr>
+<tr>
+<td align="left">SW</td>
+<td align="left">S-type</td>
+<td align="left">SW RS2, IMM(RS1)</td>
+<td align="left">Store Word，将 RS2 寄存器中的 32 bits 的数据写出到内存中，内存地址 &#x3D; RS1 + IMM</td>
+<td align="left">sw x5, 40(x6)</td>
+</tr>
+</tbody></table>
+<ul>
+<li>注意：IMM 给出的偏移量范围是 [-2048, 2047]</li>
+</ul>
+<h2 id="小知识大知识：sign-extended（符号扩展）和-zero-extended（零扩展）"><a href="#小知识大知识：sign-extended（符号扩展）和-zero-extended（零扩展）" class="headerlink" title="小知识大知识：sign-extended（符号扩展）和 zero-extended（零扩展）"></a><del>小知识</del>大知识：sign-extended（符号扩展）和 zero-extended（零扩展）</h2><ul>
+<li>sign-extended 定义：将较短位数的数值扩展为较长位数时，高位填充符号位</li>
+<li>zero-extended 定义：将较短位数的数值扩展为较长位数时，高位填充 0</li>
+</ul>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
 </article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/04/06/riscv-asm-03/">RISC-V 汇编语言笔记 03</a></div></section></div>
+
+
+
 
 
 
 <footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/">分类</a><a href="/">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs15">社交</span><a target="_blank" rel="noopener" href="https://github.com/MinimalMio">Github</a><a target="_blank" rel="noopener" href="https://t.me/Kitahashi_Sakura">Telegram</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a><a href="/friends/">友情链接</a></div></div><div class="text"><p>本站由 <a href="/">Kitahashi Sakura</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-text">逻辑运算指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4"><span class="toc-text">移位运算指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E8%AF%BB%E5%86%99%E6%8C%87%E4%BB%A4"><span class="toc-text">内存读写指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E8%AF%BB%E6%8C%87%E4%BB%A4%EF%BC%9ALoad%EF%BC%8C%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BB%8E%E5%86%85%E5%AD%98%E8%AF%BB%E5%85%A5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">内存读指令：Load，将数据从内存读入寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%86%99%E6%8C%87%E4%BB%A4%EF%BC%9AStore%EF%BC%8C%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BB%8E%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%99%E5%87%BA%E5%88%B0%E5%86%85%E5%AD%98"><span class="toc-text">内存写指令：Store，将数据从寄存器写出到内存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%9F%A5%E8%AF%86%E5%A4%A7%E7%9F%A5%E8%AF%86%EF%BC%9Asign-extended%EF%BC%88%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95%EF%BC%89%E5%92%8C-zero-extended%EF%BC%88%E9%9B%B6%E6%89%A9%E5%B1%95%EF%BC%89"><span class="toc-text">小知识大知识：sign-extended（符号扩展）和 zero-extended（零扩展）</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
