@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,20 +17,26 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>归档 - 北橋</title>
+  <title>RISC-V 汇编语言笔记 5 - 北橋</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://minimalmio.github.io/archives/2025/index.html">
+    <meta name="description" content="条件分支指令（Conditional Branch Instructions）   指令 格式 语法 描述 例子    BEQ B-type BEQ RS1,RS2,IMM Branch if EQual，比较 RS1 和 RS2 的值，如果相等，则执行路径跳转到一个新的地址 beq x5, x6, 100   BNE B-type BNE RS1,RS2,IMM Branch if Not Eq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RISC-V 汇编语言笔记 5">
+<meta property="og:url" content="http://minimalmio.github.io/2025/04/08/riscv-asm-05/index.html">
 <meta property="og:site_name" content="北橋">
+<meta property="og:description" content="条件分支指令（Conditional Branch Instructions）   指令 格式 语法 描述 例子    BEQ B-type BEQ RS1,RS2,IMM Branch if EQual，比较 RS1 和 RS2 的值，如果相等，则执行路径跳转到一个新的地址 beq x5, x6, 100   BNE B-type BNE RS1,RS2,IMM Branch if Not Eq">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-07T17:31:12.000Z">
+<meta property="article:modified_time" content="2025-04-07T17:31:47.424Z">
 <meta property="article:author" content="Kitahashi Sakura">
+<meta property="article:tag" content="RISC-V">
+<meta property="article:tag" content="Assembly">
 <meta name="twitter:card" content="summary">
   
   
   
-  
+  <meta name="keywords" content="RISC-V,Assembly">
 
   <!-- feed -->
   
@@ -46,7 +52,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="undefined" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic1.imgdb.cn/item/67be252bd0e0a243d405c223.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">北橋</div><div class="sub cap">Make me drifting in endless darkness...</div></a></div></header>
@@ -58,21 +64,181 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/04/08/riscv-asm-05/"><span class="title">RISC-V 汇编语言笔记 5</span></a><a class="item title" href="/2025/04/07/riscv-asm-04/"><span class="title">RISC-V 汇编语言笔记 4</span></a><a class="item title" href="/2025/04/06/riscv-asm-03/"><span class="title">RISC-V 汇编语言笔记 03</span></a><a class="item title" href="/2025/04/03/riscv-asm-01/"><span class="title">RISC-V 汇编语言笔记 01</span></a><a class="item title" href="/2025/04/04/riscv-asm-02/"><span class="title">RISC-V 汇编语言笔记 02</span></a><a class="item title" href="/2025/04/04/riscv-basic/"><span class="title">RISC-V 前置基础</span></a><a class="item title" href="/2025/02/15/Qt%E7%AC%94%E8%AE%B01/"><span class="title">Qt笔记1 按钮</span></a><a class="item title" href="/2025/02/22/Qt%E7%AC%94%E8%AE%B02-%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80/"><span class="title">Qt笔记2 界面布局</span></a><a class="item title" href="/2025/02/13/compile-xrdp-ub2004/"><span class="title">记在 Ubuntu 20.04 下编译安装 XRDP</span></a><a class="item title" href="/2025/02/13/dotnet-termux-iss/"><span class="title">修复 dotnet 在 Termux 上的运行问题</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/MinimalMio" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic1.imgdb.cn/item/67be252bd0e0a243d405c223.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">北橋</div><div class="sub cap">Make me drifting in endless darkness...</div></a></div></header>
-
- 
 
 
-<div class="navbar top"><nav class="post"><a href="/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a class="active" href="/archives/">归档</a></nav></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2025</div><div class="archive-list"><a class='post fs14' href="/2025/04/08/riscv-asm-05/"><time>04-08</time><span>RISC-V 汇编语言笔记 5</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/04/07/riscv-asm-04/"><time>04-07</time><span>RISC-V 汇编语言笔记 4</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/04/06/riscv-asm-03/"><time>04-06</time><span>RISC-V 汇编语言笔记 03</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/04/04/riscv-basic/"><time>04-04</time><span>RISC-V 前置基础</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/04/04/riscv-asm-02/"><time>04-04</time><span>RISC-V 汇编语言笔记 02</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/04/03/riscv-asm-01/"><time>04-03</time><span>RISC-V 汇编语言笔记 01</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/22/Qt%E7%AC%94%E8%AE%B02-%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80/"><time>02-22</time><span>Qt笔记2 界面布局</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/15/Qt%E7%AC%94%E8%AE%B01/"><time>02-15</time><span>Qt笔记1 按钮</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/winnt351-install/"><time>02-13</time><span>记 在 Qemu 上安装 Windows NT Workstation 3.51 中文版</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/winnt40-autologon/"><time>02-13</time><span>如何为 Windows NT 4.0 启用 AutoLogon</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/win98-qemu-usbtablet/"><time>02-13</time><span>如何为 Windows 98 启用 Qemu USB Tablet 支持</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/uberbukkit-develping-b173/"><time>02-13</time><span>搭建 UberBukkit b1.7.3 开发环境</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/setting-xrdp-rocky8/"><time>02-13</time><span>在 RockyLinux 8 上设置 XRDP</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/qemu-macos-71-81/"><time>02-13</time><span>使用 Qemu 启动 MacOS 7.1~8.1 的任意版本</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/linux-swap/"><time>02-13</time><span>备忘：Linux 中 Swap 交换分区设置教程，以及 Swap 大小与内存的关系</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/dotnet-termux-iss/"><time>02-13</time><span>修复 dotnet 在 Termux 上的运行问题</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/forge-developing-1710/"><time>02-13</time><span>在现代 Minecraft 时期进行 Minecraft Forge 1.7.10 Modding</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/02/13/compile-xrdp-ub2004/"><time>02-13</time><span>记在 Ubuntu 20.04 下编译安装 XRDP</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/RISC-V/">RISC-V</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-04-07T17:31:12.000Z">2025-04-08</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-04-07T17:31:47.424Z">2025-04-08</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>RISC-V 汇编语言笔记 5</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="条件分支指令（Conditional-Branch-Instructions）"><a href="#条件分支指令（Conditional-Branch-Instructions）" class="headerlink" title="条件分支指令（Conditional Branch Instructions）"></a>条件分支指令（Conditional Branch Instructions）</h2><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">格式</th>
+<th align="left">语法</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">BEQ</td>
+<td align="left">B-type</td>
+<td align="left">BEQ RS1,RS2,IMM</td>
+<td align="left"><strong>B</strong>ranch if <strong>EQ</strong>ual，比较 RS1 和 RS2 的值，如果相等，则执行路径跳转到一个新的地址</td>
+<td align="left">beq x5, x6, 100</td>
+</tr>
+<tr>
+<td align="left">BNE</td>
+<td align="left">B-type</td>
+<td align="left">BNE RS1,RS2,IMM</td>
+<td align="left"><strong>B</strong>ranch if <strong>N</strong>ot <strong>E</strong>qual，比较 RS1 和 RS2 的值，如果<strong>不</strong>相等，则执行路径跳转到一个新的地址</td>
+<td align="left">bne x5, x6, 100</td>
+</tr>
+<tr>
+<td align="left">BLT</td>
+<td align="left">B-type</td>
+<td align="left">BLT RS1,RS2,IMM</td>
+<td align="left"><strong>B</strong>ranch if <strong>L</strong>ess <strong>T</strong>han，按照<strong>有符号方式</strong>比较 RS1 和 RS2 的值，如果 RS1 &lt; RS2，则执行路径跳转到一个新的地址</td>
+<td align="left">blt x5, x6, 100</td>
+</tr>
+<tr>
+<td align="left">BLTU</td>
+<td align="left">B-type</td>
+<td align="left">BLTU RS1,RS2,IMM</td>
+<td align="left"><strong>B</strong>ranch if <strong>L</strong>ess <strong>T</strong>han（<strong>U</strong>nsigned），按照<strong>无符号方式</strong>比较 RS1 和 RS2 的值，如果 RS1 &lt; RS2，则执行路径跳转到一个新的地址</td>
+<td align="left">bltu x5, x6, 100</td>
+</tr>
+<tr>
+<td align="left">BGE</td>
+<td align="left">B-type</td>
+<td align="left">BGE RS1,RS2,IMM</td>
+<td align="left"><strong>B</strong>ranch if <strong>G</strong>reater than or <strong>E</strong>qual，按照<strong>有符号方式</strong>比较 RS1 和 RS2 的值，如果 RS1 &gt;&#x3D; RS2，则执行路径跳转到一个新的地址</td>
+<td align="left">bge x5, x6, 100</td>
+</tr>
+<tr>
+<td align="left">BGEU</td>
+<td align="left">B-type</td>
+<td align="left">BGEU RS1,RS2,IMM</td>
+<td align="left"><strong>B</strong>ranch if <strong>G</strong>reater than of <strong>E</strong>qual（<strong>U</strong>nsigned），按照<strong>无符号方式</strong>比较 RS1 和 RS2 的值，如果 RS1 &gt;&#x3D; RS2，则执行路径跳转到一个新的地址</td>
+<td align="left">bgeu x5, x6, 100</td>
+</tr>
+</tbody></table>
+<ul>
+<li>跳转的目标地址计算方法：先将 IMM × 2，符号扩展后和 PC 相加得到最终的目标地址，所以跳转范围是以 PC 为基准，+&#x2F;-4KB 左右([-4096,4094])</li>
+<li>具体编程时，不会直接写 IMM，而是用标号代替，交由链接器来最终决定 IMM 的值</li>
+</ul>
+<h2 id="无条件跳转指令（Unconditional-Jump-Instructions）"><a href="#无条件跳转指令（Unconditional-Jump-Instructions）" class="headerlink" title="无条件跳转指令（Unconditional Jump Instructions）"></a>无条件跳转指令（Unconditional Jump Instructions）</h2><h3 id="JAL（Jump-and-Link）"><a href="#JAL（Jump-and-Link）" class="headerlink" title="JAL（Jump and Link）"></a>JAL（Jump and Link）</h3><ul>
+<li>语法：JAL RD, LABEL</li>
+<li>示例：jal x1, label</li>
+<li>格式：J-type</li>
+<li>jal 指令用于调用子过程（subroutine&#x2F;function）</li>
+<li>子过程的地址计算方法：首先对 20 bits 宽的 IMM × 2 后进行 sign-extended，然后将符号扩展后的值和 PC 值相加，因此该函数跳转的范围是以 PC 为基准，上下 ~+&#x2F;- 1MB</li>
+<li>jal 指令的下一条指令的地址写入 rd，保存为返回地址</li>
+<li>实际编程时，用 label 给出跳转的目标，具体 IMM 值由编译器和链接器最终负责生成</li>
+</ul>
+<h3 id="JALR（Jump-and-Link-Register）"><a href="#JALR（Jump-and-Link-Register）" class="headerlink" title="JALR（Jump and Link Register）"></a>JALR（Jump and Link Register）</h3><ul>
+<li>语法：JALR RD, IMM(RS1)</li>
+<li>示例：jalr x0, 0(x5)<ul>
+<li>此示例中，x0 其实是可以的，在这个位置写 x0 代表不想跳转回来</li>
+</ul>
+</li>
+<li>格式：I-type</li>
+<li>子过程的地址计算方法：首先对 12 bits 宽的 IMM 进行 sign-extended，然后将符号扩展后的值和 RS1 值相加，得到最终的结果后将最低位设置为0（确保地址按 2 字节对齐），因此该函数跳转的范围是以 RS1 为基准，上下 ~+&#x2F;- 2KB</li>
+<li>jalr 指令的下一条指令的地址写入 rd，保存为返回地址</li>
+</ul>
+<p>如果跳转后不需要返回，那么可以利用 x0 代替 jal 和 jalr 中的 rd</p>
+<table>
+<thead>
+<tr>
+<th align="left">伪指令</th>
+<th align="left">语法</th>
+<th align="left">等价指令</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">j</td>
+<td align="left">j offset</td>
+<td align="left">jal x0, offset</td>
+<td align="left">j leap</td>
+</tr>
+<tr>
+<td align="left">jr</td>
+<td align="left">jr rs</td>
+<td align="left">jalr x0, 0(rs)</td>
+<td align="left">jr x2</td>
+</tr>
+</tbody></table>
+<h2 id="RISC-V-指令寻址模式总结"><a href="#RISC-V-指令寻址模式总结" class="headerlink" title="RISC-V 指令寻址模式总结"></a>RISC-V 指令寻址模式总结</h2><ul>
+<li>所谓寻址模式指的是指令中定位操作数（operand）或者地址的方式</li>
+<li>立即数寻址<ul>
+<li>解释：操作数是指令本身的一部分</li>
+<li>例子：<code>addi x5, x6, 20</code></li>
+</ul>
+</li>
+<li>寄存器寻址<ul>
+<li>解释：操作数存放在寄存器中，指令中访问指定的寄存器从而获取该操作数</li>
+<li>例子：<code>add x5, x6, x7</code></li>
+</ul>
+</li>
+<li>基址寻址<ul>
+<li>解释：操作数在内存中，指令中通过指定寄存器（基址 base）和立即数（偏移量 offset），通过 base + offset 的方式获得操作数在内存中的地址从而获取该操作数</li>
+<li>例子：<code>sw x5, 40(x6)</code></li>
+</ul>
+</li>
+<li>PC 相对寻址<ul>
+<li>解释：在指令中通过 PC 和指令中的立即数相加获得目标地址的值</li>
+<li>例子：<code>beq x5, x6, 100</code></li>
+</ul>
+</li>
+</ul>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/04/07/riscv-asm-04/">RISC-V 汇编语言笔记 4</a></div></section></div>
+
+
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/">分类</a><a href="/">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs15">社交</span><a target="_blank" rel="noopener" href="https://github.com/MinimalMio">Github</a><a target="_blank" rel="noopener" href="https://t.me/Kitahashi_Sakura">Telegram</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a><a href="/friends/">友情链接</a></div></div><div class="text"><p>本站由 <a href="/">Kitahashi Sakura</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E6%8C%87%E4%BB%A4%EF%BC%88Conditional-Branch-Instructions%EF%BC%89"><span class="toc-text">条件分支指令（Conditional Branch Instructions）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC%E6%8C%87%E4%BB%A4%EF%BC%88Unconditional-Jump-Instructions%EF%BC%89"><span class="toc-text">无条件跳转指令（Unconditional Jump Instructions）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JAL%EF%BC%88Jump-and-Link%EF%BC%89"><span class="toc-text">JAL（Jump and Link）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JALR%EF%BC%88Jump-and-Link-Register%EF%BC%89"><span class="toc-text">JALR（Jump and Link Register）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RISC-V-%E6%8C%87%E4%BB%A4%E5%AF%BB%E5%9D%80%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="toc-text">RISC-V 指令寻址模式总结</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
