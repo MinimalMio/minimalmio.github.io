@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,20 +17,26 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>标签：Linux - 北橋</title>
+  <title>RISC-V 汇编语言笔记 6 - 北橋</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="北橋">
-<meta property="og:url" content="http://minimalmio.github.io/tags/Linux/index.html">
+    <meta name="description" content="函数调用过程概述 stack v. 堆木头     栈：在函数调用过程中，需要定义一个栈，栈实际上就是一块内存，这块内存用来存放函数调用过程中它所使用的一些局部变量 栈帧：每次一个函数要执行的时候，我们就要为这个函数分配一块空间来存放它自己的函数栈（即入栈），即栈帧。当函数返回时，栈帧会被释放掉（即出栈）。  函数调用过程中有关寄存器的编程规定   寄存器名 ABI 名（编程用名） 用途约定 谁负">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RISC-V 汇编语言笔记 6">
+<meta property="og:url" content="http://minimalmio.github.io/2025/04/09/riscv-asm-06/index.html">
 <meta property="og:site_name" content="北橋">
+<meta property="og:description" content="函数调用过程概述 stack v. 堆木头     栈：在函数调用过程中，需要定义一个栈，栈实际上就是一块内存，这块内存用来存放函数调用过程中它所使用的一些局部变量 栈帧：每次一个函数要执行的时候，我们就要为这个函数分配一块空间来存放它自己的函数栈（即入栈），即栈帧。当函数返回时，栈帧会被释放掉（即出栈）。  函数调用过程中有关寄存器的编程规定   寄存器名 ABI 名（编程用名） 用途约定 谁负">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-08T16:38:22.000Z">
+<meta property="article:modified_time" content="2025-04-08T16:38:57.616Z">
 <meta property="article:author" content="Kitahashi Sakura">
+<meta property="article:tag" content="RISC-V">
+<meta property="article:tag" content="Assembly">
 <meta name="twitter:card" content="summary">
   
   
   
-  
+  <meta name="keywords" content="RISC-V,Assembly">
 
   <!-- feed -->
   
@@ -46,7 +52,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="undefined" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic1.imgdb.cn/item/67be252bd0e0a243d405c223.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">北橋</div><div class="sub cap">Make me drifting in endless darkness...</div></a></div></header>
@@ -58,35 +64,132 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/04/09/riscv-asm-06/"><span class="title">RISC-V 汇编语言笔记 6</span></a><a class="item title" href="/2025/04/08/riscv-asm-05/"><span class="title">RISC-V 汇编语言笔记 5</span></a><a class="item title" href="/2025/04/07/riscv-asm-04/"><span class="title">RISC-V 汇编语言笔记 4</span></a><a class="item title" href="/2025/04/06/riscv-asm-03/"><span class="title">RISC-V 汇编语言笔记 03</span></a><a class="item title" href="/2025/04/03/riscv-asm-01/"><span class="title">RISC-V 汇编语言笔记 01</span></a><a class="item title" href="/2025/04/04/riscv-asm-02/"><span class="title">RISC-V 汇编语言笔记 02</span></a><a class="item title" href="/2025/04/04/riscv-basic/"><span class="title">RISC-V 前置基础</span></a><a class="item title" href="/2025/02/15/Qt%E7%AC%94%E8%AE%B01/"><span class="title">Qt笔记1 按钮</span></a><a class="item title" href="/2025/02/22/Qt%E7%AC%94%E8%AE%B02-%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80/"><span class="title">Qt笔记2 界面布局</span></a><a class="item title" href="/2025/02/13/compile-xrdp-ub2004/"><span class="title">记在 Ubuntu 20.04 下编译安装 XRDP</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/MinimalMio" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic1.imgdb.cn/item/67be252bd0e0a243d405c223.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">北橋</div><div class="sub cap">Make me drifting in endless darkness...</div></a></div></header>
-
- 
 
 
 
 
-<div class="navbar top"><nav class="post"><a href="/">近期发布</a><a href="/categories/">分类</a><a class="active" href="/tags/">标签：Linux</a><a href="/archives/">归档</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/2025/02/13/setting-xrdp-rocky8/">
-<article class="md-text"><h2 class="post-title">在 RockyLinux 8 上设置 XRDP</h2><div class="excerpt"><p>软件包预备以下将以Xorg XRDP为例  
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/RISC-V/">RISC-V</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-04-08T16:38:22.000Z">2025-04-09</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-04-08T16:38:57.616Z">2025-04-09</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>RISC-V 汇编语言笔记 6</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="函数调用过程概述"><a href="#函数调用过程概述" class="headerlink" title="函数调用过程概述"></a>函数调用过程概述</h2><blockquote>
+<p>stack v. 堆木头  </p>
+</blockquote>
+<ul>
+<li>栈：在函数调用过程中，需要定义一个栈，栈实际上就是一块内存，这块内存用来存放函数调用过程中它所使用的一些局部变量</li>
+<li>栈帧：每次一个函数要执行的时候，我们就要为这个函数分配一块空间来存放它自己的函数栈（即入栈），即栈帧。当函数返回时，栈帧会被释放掉（即出栈）。</li>
+</ul>
+<h2 id="函数调用过程中有关寄存器的编程规定"><a href="#函数调用过程中有关寄存器的编程规定" class="headerlink" title="函数调用过程中有关寄存器的编程规定"></a>函数调用过程中有关寄存器的编程规定</h2><table>
+<thead>
+<tr>
+<th align="left">寄存器名</th>
+<th align="left">ABI 名（编程用名）</th>
+<th align="left">用途约定</th>
+<th align="left">谁负责在函数调用过程中维护这些寄存器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">x0</td>
+<td align="left">zero</td>
+<td align="left">读取时总为 0，写入时不起任何效果</td>
+<td align="left">N&#x2F;A</td>
+</tr>
+<tr>
+<td align="left">x1</td>
+<td align="left">ra</td>
+<td align="left">存放函数返回地址的值（return address）</td>
+<td align="left">Caller（调用者）</td>
+</tr>
+<tr>
+<td align="left">x2</td>
+<td align="left">sp</td>
+<td align="left">存放栈指针（stack pointer）</td>
+<td align="left">Callee（被调用者）</td>
+</tr>
+<tr>
+<td align="left">x5<del>x7,x28</del>x31</td>
+<td align="left">t0<del>t2,t3</del>t6</td>
+<td align="left">临时（temporaries）寄存器，Callee 可能会使用这些寄存器，所以 Callee 不保证这些寄存器中的值在函数调用过程中保持不变，这意味着对于 Caller 来说，如果需要的话，Caller 需要自己在调用 Callee 之前保存[^1]临时寄存器中的值</td>
+<td align="left">Caller（调用者）</td>
+</tr>
+<tr>
+<td align="left">x8<del>x9,x18</del>x27</td>
+<td align="left">s0,s1,s2~s11</td>
+<td align="left">保存（saved）寄存器，Callee 需要保证这些寄存器的值在函数返回后仍然维持函数调用之前的原值，所以一旦 Callee 在自己的函数中会用到这些寄存器则需要在栈中备份并在退出函数时进行恢复</td>
+<td align="left">Callee（被调用者）</td>
+</tr>
+<tr>
+<td align="left">x10,x11</td>
+<td align="left">a0,a1</td>
+<td align="left">参数（argument）寄存器，用于在函数调用过程中保存第一个和第二个参数，以及在函数返回时传递返回值</td>
+<td align="left">Caller（调用者）</td>
+</tr>
+<tr>
+<td align="left">x12~x17</td>
+<td align="left">a2~a7</td>
+<td align="left">参数（argument）寄存器， 如果函数调用时需要传递更多的参数，则可以用这些寄存器，但注意用于传递参数的寄存器最多只有 8 个（a0 ~ a7），如果还有更多的参数则要利用栈</td>
+<td align="left">Caller（调用者）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>[^1]: 保存到 Caller 的函数栈里。</li>
+</ul>
+<h2 id="函数调用过程中实现被调用函数的编程约定"><a href="#函数调用过程中实现被调用函数的编程约定" class="headerlink" title="函数调用过程中实现被调用函数的编程约定"></a>函数调用过程中实现被调用函数的编程约定</h2><ul>
+<li>函数起始部分（Prologue）</li>
+<li>减少 sp 的值，根据本函数中使用 saved 寄存器的情况以及 local 变量的多少开辟栈空间。</li>
+<li>将 saved 寄存器的值保存到栈中</li>
+<li>如果函数中还会调用其他的函数，则将 ra 寄存器的值保存到栈中</li>
+<li>函数执行体</li>
+<li>从栈中恢复 saved 寄存器</li>
+<li>如果需要的话，从栈中恢复 ra 寄存器</li>
+<li>增加 sp 的值，恢复到进入本函数之前的状态。</li>
+<li>调用 ret 返回</li>
+</ul>
 
-[!TIP]你将需要安装以下软件包：xorgxrdp xrdp,以及一个可以正常工作的桌面环境。本文将以KDE Plasma作文桌面环境,原因见上一个文章  
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/04/08/riscv-asm-05/">RISC-V 汇编语言笔记 5</a></div></section></div>
 
-运行命令sudo dnf install...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-02-13T03:19:12.000Z">2025-02-13</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>技术</span></span></div></article>
-</a><a class="post-card post" href="/2025/02/13/linux-swap/">
-<article class="md-text"><h2 class="post-title">备忘：Linux 中 Swap 交换分区设置教程，以及 Swap 大小与内存的关系</h2><div class="excerpt"><p>Swap 分区是什么Swap（Swap 分区、Swap 内存），中文名是交换分区，类似于 Windows 中的虚拟内存，就是当内存不足的时候，把一部分硬盘空间虚拟成内存使用，从而解决内存容量不足的情况。  
-因此，Swap 分区的作用就是牺牲硬盘，增...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-02-13T03:17:44.000Z">2025-02-13</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>技术</span></span></div></article>
-</a></div>
+
+
+
 
 
 <footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/">分类</a><a href="/">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs15">社交</span><a target="_blank" rel="noopener" href="https://github.com/MinimalMio">Github</a><a target="_blank" rel="noopener" href="https://t.me/Kitahashi_Sakura">Telegram</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a><a href="/friends/">友情链接</a></div></div><div class="text"><p>本站由 <a href="/">Kitahashi Sakura</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E6%A6%82%E8%BF%B0"><span class="toc-text">函数调用过程概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%9C%89%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E7%BC%96%E7%A8%8B%E8%A7%84%E5%AE%9A"><span class="toc-text">函数调用过程中有关寄存器的编程规定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%AE%9E%E7%8E%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E7%9A%84%E7%BC%96%E7%A8%8B%E7%BA%A6%E5%AE%9A"><span class="toc-text">函数调用过程中实现被调用函数的编程约定</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
